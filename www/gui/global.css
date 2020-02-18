@@ -1,0 +1,72 @@
+* {
+    font-family: sans-serif;
+    box-sizing: border-box;
+}
+
+:root{
+    --shadow0: rgba(0, 0, 0, 0.06);
+    --shadow1: rgba(0, 0, 0, 0.12);
+    --light0: rgba(255, 255, 255, 0.06);
+    --light1: rgba(255, 255, 255, 0.12);
+    --round: 6px;
+
+    --btn0: rgb(234, 234, 234);
+    --btn1: rgb(244, 244, 244);
+    --btn0-hover: rgb(244, 244, 244);
+    --btn1-hover: rgb(254, 254, 254);
+
+    font-size: 1em;
+}
+
+html{
+    margin: 20px;
+    /* background-color: #666; */
+    background-color: var(--shadow1);
+    overflow: hidden;
+    font-size: 1em;
+}
+
+button{
+    /* remove button styling */
+    border: none;
+    font-size: 1em;
+}
+
+.map{
+    position: absolute;
+    left: 0;
+    right: 0;
+    min-width: 100vw;
+    min-height: 100vh;
+}
+
+.sprite{
+    position: absolute;
+}
+
+.square, .circle{
+    background-color: var(--shadow0);
+    border: 8px solid var(--shadow0);
+}
+
+.circle{
+    border-radius: 100%;
+}
+
+.btn {
+    border-radius: var(--round);
+    box-shadow: 3px 5px 5px var(--shadow0), -3px -5px 5px var(--light0);
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    transition: box-shadow .3s;
+    cursor: pointer;
+    background: linear-gradient(145deg, var(--btn0), var(--btn1));
+}
+
+.btn:hover{
+    box-shadow: 3px 5px 10px var(--shadow1), -3px -5px 10px var(--light1);
+    background-color: var(--shadow0);
+    background: linear-gradient(145deg, var(--btn0-hover), var(--btn1-hover));
+    font-size: 1.1em;
+}
