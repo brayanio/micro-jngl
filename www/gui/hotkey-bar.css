@@ -1,0 +1,10 @@
+.hotkey-bar{
+    display: flex;
+    align-items: center;
+}
+
+.hotkey-bar .btn{
+    position: static;
+    width: 100%;
+    height: 100%;
+}

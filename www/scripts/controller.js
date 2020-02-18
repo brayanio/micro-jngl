@@ -1,5 +1,6 @@
 let dir = {w: false, s: false, a: false, d: false}
 let intervals = []
+let actions = {}
 
 const listen = () => {
     addEventListener('keydown', e => {
@@ -13,6 +14,12 @@ const listen = () => {
         if(dir[e.key] !== undefined)
             dir[e.key] = res
     })
+
+    addEventListener('keypress', e => {
+        if(actions[e.key]){
+            Object.values(actions[e.key]).forEach(fn => fn(e))
+        }
+    })
 }
 
 const oni = (v, fn, i) => intervals.push(
@@ -21,6 +28,15 @@ const oni = (v, fn, i) => intervals.push(
             fn()
     }, i)
 )
+
+const onaction = (key, name, fn) => {
+    if(actions[key])
+        actions[key].name = fn
+}
+
+const removeAction = (key, name) => {
+    delete actions[key][name]
+}
 
 //gameloop
 let currentLoop;
@@ -43,7 +59,6 @@ const onloop = loop => {
 }
 const endloop = () => currentLoop && cancelAnimationFrame(currentLoop)
 
-
 export default {
-    listen, oni, onloop
+    listen, oni, onloop, onaction, removeAction
 }

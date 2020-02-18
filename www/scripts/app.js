@@ -3,22 +3,25 @@ import prefabs from './prefabs.js'
 
 import controller from './controller.js'
 
+let player = prefabs.player()
+// MAP
+const map = gui.map(100, 100, 400, 300)
+
+// HUD
+const hotkeyBar = prefabs.hotkeyBar()
 const exit = prefabs.exit()
+const follow = prefabs.cameraFollow(map)
 
-const player = gui.sprite({
-    el: 'button',
-    classList: ['circle'],
-    bounds: {x: 10, y: 300, w: 60, h: 60}
-})
+hotkeyBar.setHotKeys([follow, exit])
 
-const map = gui.map(1920, 1080, [exit, player])
-
+// INIT
+map.addSprite(player)
+map.addHUD(hotkeyBar)
 controller.listen()
 
-let speed = 8
+
 controller.onloop((dt, dir) => {
-    if(dir.w) player.move(0, -speed)
-    if(dir.s) player.move(0, speed)
-    if(dir.a) player.move(-speed, 0)
-    if(dir.d) player.move(speed, 0)
+    player.onloop(dir)
+    if(follow.isFollowing())
+        map.focusSprite(player)
 })
