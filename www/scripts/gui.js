@@ -1,5 +1,3 @@
-const unit = 'px'
-
 const rect = (x, y, w, h) => { return {x, y, w, h} }
 
 const sprite = props => {

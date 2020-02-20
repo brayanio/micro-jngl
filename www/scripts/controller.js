@@ -16,9 +16,8 @@ const listen = () => {
     })
 
     addEventListener('keypress', e => {
-        if(actions[e.key]){
+        if(actions[e.key])
             Object.values(actions[e.key]).forEach(fn => fn(e))
-        }
     })
 }
 
@@ -31,11 +30,14 @@ const oni = (v, fn, i) => intervals.push(
 
 const onaction = (key, name, fn) => {
     if(actions[key])
-        actions[key].name = fn
+        actions[key][name] = fn
+    else
+        actions[key] = {[name]: fn}
 }
 
 const removeAction = (key, name) => {
-    delete actions[key][name]
+    if(actions[key] && actions[key][name])
+        delete actions[key][name]
 }
 
 //gameloop
@@ -60,5 +62,5 @@ const onloop = loop => {
 const endloop = () => currentLoop && cancelAnimationFrame(currentLoop)
 
 export default {
-    listen, oni, onloop, onaction, removeAction
+    listen, oni, onloop, onaction, removeAction, actions
 }

@@ -25,6 +25,7 @@ export default () => {
         if(dir.s) player.move(0, speed)
         if(dir.a) player.move(-speed, 0)
         if(dir.d) player.move(speed, 0)
+        checkbounds()
     }
     player.onloop = onloop
 

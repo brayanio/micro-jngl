@@ -10,6 +10,8 @@
     --shadow1: rgba(0, 0, 0, 0.12);
     --shadow2: rgba(0, 0, 0, 0.18);
     --shadow3: rgba(0, 0, 0, 0.24);
+    --shadow4: rgba(0, 0, 0, 0.30);
+    --shadow5: rgba(0, 0, 0, 0.36);
     --light0: rgba(255, 255, 255, 0.06);
     --light1: rgba(255, 255, 255, 0.12);
     --light2: rgba(255, 255, 255, 0.18);
@@ -23,12 +25,15 @@
     --btn0-hover: var(--light4);
     --btn1-hover: var(--light5);
 
+    --text: #444;
+
     font-size: 1em;
 }
 
 html{
     font-size: 1em;
-    background: #999;
+    background: #013232;
+    color: var(--text);
 }
 
 body{
@@ -37,7 +42,7 @@ body{
     width: 100vw;
     height: 100vh;
     overflow: hidden;
-    background: #999;
+    background: #013232;
 }
 
 button{
@@ -56,7 +61,8 @@ button{
     right: 0;
     min-width: 100vw;
     min-height: 100vh;
-    background: linear-gradient(145deg, var(--light1), var(--shadow1));
+    background: linear-gradient(145deg, #999, #777);
+    box-shadow: 35px 15px 35px cyan, -35px -15px 35px teal;
 }
 
 .transition{
@@ -64,7 +70,7 @@ button{
 }
 
 .square, .circle{
-    background-color: var(--shadow0);
+    background-color: darkgreen;
     border: 8px solid var(--shadow0);
 }
 
@@ -97,6 +103,8 @@ button{
 .btn.disabled, .btn.active{
     box-shadow: inset 3px 5px 10px var(--shadow2), inset -3px -5px 10px var(--shadow0);
     background: transparent;
+}
+.btn.active{
     color: white;
 }
 
@@ -109,6 +117,9 @@ button{
 .btn:focus{
     outline: none;
     border: 3px solid blue;
+    box-shadow: 3px 5px 10px var(--shadow1), -3px -5px 10px var(--light1);
+    background: linear-gradient(145deg, var(--btn0-hover), var(--btn1-hover));
+    font-size: 1.1em;
 }
 
 .hud{

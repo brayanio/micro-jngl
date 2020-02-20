@@ -4,7 +4,46 @@
 }
 
 .hotkey-bar .btn{
-    position: static;
+    position: relative;
     width: 100%;
     height: 100%;
+    margin: 0 .1vw;
+    font-weight: bold;
+}
+
+.hotkey-bar .btn:not(.disabled):after{
+    box-shadow: 3px 5px 10px var(--shadow2), inset -3px -5px 10px var(--shadow2);
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    width: 1.3em;
+    height: 1.3em;
+    background: white;
+    align-items: center;
+    font-size: 1.1em;
+    font-weight: bold;
+    border-top-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+    top: 0;
+    left: 0;
+    color: var(--text);
+}
+
+.hotkey-bar .btn:not(.disabled):nth-child(1):after{
+    content: '1';
+}
+.hotkey-bar .btn:not(.disabled):nth-child(2):after{
+    content: '2';
+}
+.hotkey-bar .btn:not(.disabled):nth-child(3):after{
+    content: '3';
+}
+.hotkey-bar .btn:not(.disabled):nth-child(4):after{
+    content: '4';
+}
+.hotkey-bar .btn:not(.disabled):nth-child(5):after{
+    content: '5';
+}
+.hotkey-bar .btn:not(.disabled):nth-child(6):after{
+    content: '6';
 }

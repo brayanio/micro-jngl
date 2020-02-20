@@ -10,9 +10,10 @@ const map = gui.map(100, 100, 400, 300)
 // HUD
 const hotkeyBar = prefabs.hotkeyBar()
 const exit = prefabs.exit()
-const follow = prefabs.cameraFollow(map)
+// const cameraFollow = prefabs.cameraFollow(map)
 
-hotkeyBar.setHotKeys([follow, exit])
+hotkeyBar.setHotKeys([prefabs.exampleHotkey(), prefabs.exampleHotkey(), prefabs.exampleHotkey(),
+    prefabs.exampleHotkey(), prefabs.exampleHotkey(), exit])
 
 // INIT
 map.addSprite(player)
@@ -22,6 +23,6 @@ controller.listen()
 
 controller.onloop((dt, dir) => {
     player.onloop(dir)
-    if(follow.isFollowing())
-        map.focusSprite(player)
+    // if(cameraFollow.isFollowing())
+    map.focusSprite(player)
 })
