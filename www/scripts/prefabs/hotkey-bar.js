@@ -16,7 +16,7 @@ export default () => {
         ar.forEach((a, i) => {
             let button = a.el
             ? a //if is a button
-            : btn(...a, {bounds : null}) // else make a button
+            : btn(...a, {bounds : null, hotkey: i+1}) // else make a button
             controller.onaction(i+1, `hotkey${i}`, () => button.el.click())
             hotkeys.push(button)
             bar.el.appendChild(button.el)

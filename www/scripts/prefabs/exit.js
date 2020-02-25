@@ -5,6 +5,8 @@ export default text => {
         fetch('http://localhost:4404')
         button.el.classList.add('disabled')
         button.el.setAttribute('disabled', true)
+    },{
+        hotkey: '6'
     })
     return button
 }

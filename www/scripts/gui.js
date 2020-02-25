@@ -48,43 +48,11 @@ const sprite = props => {
 
     if(props.avatar)
         avatar(props.avatar)
+
+    if(props.append)
+        props.append.el.appendChild(el)
+
     return { el, avatar, setBounds, on, move, resize, bounds, draw }
 }
 
-const map = (vpw, vph, w, h) => {
-    const entity = sprite({
-        classList: ['map'],
-        bounds: rect(0, 0, w, h)
-    })
-    const hud = sprite({ 
-        classList: ['hud'] ,
-        bounds: rect(0, 0, vpw, vph)
-    })
-
-    let sprites = [], hudSprites = []
-    const addSprite = s => {
-        sprites.push(s)
-        entity.el.appendChild(s.el)
-    }
-    const addHUD = (...s) => {
-        s.forEach(s => {
-            hudSprites.push(s)
-            hud.el.appendChild(s.el)
-        })
-    }
-
-    sprites.forEach(addSprite)
-
-    const focusSprite = s => {
-        let r = entity.bounds
-        r.x = -(s.bounds.x - vpw / 2)
-        r.y = -(s.bounds.y - vph / 2)
-        entity.draw()
-    }
-
-    entity.el.appendChild(hud.el)
-    document.body.appendChild(entity.el)
-    return Object.assign(entity, { sprites, addHUD, addSprite, focusSprite })
-}
-
-export default { map, sprite }
+export default { rect, sprite }

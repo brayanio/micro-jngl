@@ -2,22 +2,35 @@ let dir = {w: false, s: false, a: false, d: false}
 let intervals = []
 let actions = {}
 
+const key = e => {
+    let val = e.key.toLowerCase()
+    if(val === 'arrowup')
+        val = 'w'
+    if(val === 'arrowright')
+    val = 'd'
+    if(val === 'arrowleft')
+    val = 'a'
+    if(val === 'arrowdown')
+        val = 's'
+    return val
+}
+
 const listen = () => {
     addEventListener('keydown', e => {
         let res = true
-        if(dir[e.key] !== undefined)
-            dir[e.key] = res
+        if(dir[key(e)] !== undefined)
+            dir[key(e)] = res
     })
 
     addEventListener('keyup', e => {
         let res = false
-        if(dir[e.key] !== undefined)
-            dir[e.key] = res
+        if(dir[key(e)] !== undefined)
+            dir[key(e)] = res
     })
 
     addEventListener('keypress', e => {
-        if(actions[e.key])
-            Object.values(actions[e.key]).forEach(fn => fn(e))
+        if(actions[key(e)])
+            Object.values(actions[key(e)]).forEach(fn => fn(e))
     })
 }
 
@@ -44,7 +57,7 @@ const removeAction = (key, name) => {
 let currentLoop;
 const onloop = loop => {
   let last = new Date().getTime(),
-      dt = 1000 / 30, //60 fps
+      dt = 1000 / 60, //60 fps
       accumulator = 0
   const fn = () => {
     let now = new Date().getTime(), 

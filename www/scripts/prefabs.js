@@ -3,6 +3,7 @@ import cameraFollow from './prefabs/camera-follow.js'
 import exampleHotkey from './prefabs/example-hotkey.js'
 import exit from './prefabs/exit.js'
 import hotkeyBar from './prefabs/hotkey-bar.js'
+import map from './prefabs/map.js'
 import player from './prefabs/player.js'
 
 export default {
@@ -11,5 +12,6 @@ export default {
     exampleHotkey,
     exit,
     hotkeyBar,
+    map,
     player
 }

@@ -9,9 +9,11 @@
     height: 100%;
     margin: 0 .1vw;
     font-weight: bold;
+    color: white;
+    text-shadow: 2px 2px var(--text);
 }
 
-.hotkey-bar .btn:not(.disabled):after{
+.btn .hotkey{
     box-shadow: 3px 5px 10px var(--shadow2), inset -3px -5px 10px var(--shadow2);
     position: absolute;
     display: flex;
@@ -27,23 +29,5 @@
     top: 0;
     left: 0;
     color: var(--text);
-}
-
-.hotkey-bar .btn:not(.disabled):nth-child(1):after{
-    content: '1';
-}
-.hotkey-bar .btn:not(.disabled):nth-child(2):after{
-    content: '2';
-}
-.hotkey-bar .btn:not(.disabled):nth-child(3):after{
-    content: '3';
-}
-.hotkey-bar .btn:not(.disabled):nth-child(4):after{
-    content: '4';
-}
-.hotkey-bar .btn:not(.disabled):nth-child(5):after{
-    content: '5';
-}
-.hotkey-bar .btn:not(.disabled):nth-child(6):after{
-    content: '6';
+    text-shadow: 0px 0px transparent;
 }
