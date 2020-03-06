@@ -32,7 +32,11 @@ export default (vpw, vph, w, h) => {
         entity.draw()
     }
 
+    const cleanup = () => {
+      document.body.removeChild(entity.el)
+    }
+
     entity.el.appendChild(hud.el)
     document.body.appendChild(entity.el)
-    return Object.assign(entity, { addHUD, addSprite, focusSprite })
+    return Object.assign(entity, { addHUD, addSprite, focusSprite, cleanup })
 }

@@ -1,5 +1,16 @@
 const rect = (x, y, w, h) => { return {x, y, w, h} }
 
+let res = {x: 1920, y: 1080}
+const scale = (x, y) => {
+  let e = {
+    x: Math.round(innerWidth / (res.x || 1) * x),
+    y: Math.round(innerHeight / (res.y || 1) * y)
+  }
+  e.w = e.x
+  e.h = e.y
+  return e
+}
+
 const sprite = props => {
     props = props || {}
     const el = document.createElement(props.el || 'div')
@@ -9,15 +20,17 @@ const sprite = props => {
     if(props.text)
         el.innerText = props.text
 
-    const draw = () => { 
-        bounds.x = bounds.x || 0
-        bounds.y = bounds.y || 0
-        bounds.w = bounds.w || 0
-        bounds.h = bounds.h || 0 
-        el.style.left = bounds.x + 'vw'
-        el.style.top = bounds.y + 'vh'
-        el.style.width = bounds.w + 'vw'
-        el.style.height = bounds.h + 'vh'
+    const draw = () => {
+        let loc = scale(bounds.x || 0, bounds.y || 0)
+        let size = scale(bounds.w || 0, bounds.h || 0) 
+        bounds.x = loc.x
+        bounds.y = loc.y
+        bounds.w = size.w
+        bounds.h = size.h 
+        el.style.left = bounds.x + 'px'
+        el.style.top = bounds.y + 'px'
+        el.style.width = bounds.w + 'px'
+        el.style.height = bounds.h + 'px'
     }
 
     let bounds = props.bounds || rect(0, 0, 10, 10)
@@ -55,4 +68,4 @@ const sprite = props => {
     return { el, avatar, setBounds, on, move, resize, bounds, draw }
 }
 
-export default { rect, sprite }
+export default { rect, sprite, res, scale }

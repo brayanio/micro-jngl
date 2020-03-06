@@ -75,5 +75,5 @@ const onloop = loop => {
 const endloop = () => currentLoop && cancelAnimationFrame(currentLoop)
 
 export default {
-    listen, oni, onloop, onaction, removeAction, actions
+    listen, oni, onloop, onaction, removeAction, actions, endloop
 }
