@@ -68,4 +68,6 @@ const sprite = props => {
     return { el, avatar, setBounds, on, move, resize, bounds, draw }
 }
 
-export default { rect, sprite, res, scale }
+const grab = sel => document.querySelector(sel)
+
+export default { rect, sprite, res, scale, grab }
