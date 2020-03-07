@@ -12,7 +12,6 @@ import roomService from '../services/room.js'
 export default () => nggt.create({
   isRoot: true,
   classList: ['lobby'],
-  data: {},
   template: ColGrid(3, 7, 
     Join(
       Header('JNGL', 'Micro'),
@@ -23,7 +22,8 @@ export default () => nggt.create({
         LinkBtn('Refresh', () => roomService.getOpenRooms()),
         LinkBtn('Create Room', () => roomService.newRoom()),
         LinkBtn('Clear Rooms', () => roomService.clearRooms()),
-      )
+      ),
+      `<hr>`
     ),
     RoomView()
   )
