@@ -59,6 +59,8 @@ const sprite = props => {
 
   const on = (e, fn) => el.addEventListener(e, ev => fn(ev, el))
 
+  const remove = () => el.parentElement.removeChild(el)
+
   if (props.avatar)
     avatar(props.avatar)
 
@@ -69,16 +71,16 @@ const sprite = props => {
     el.innerHTML = props.template
 
   if (props.onload)
-    onload(props.onload[0], props.onload[1])
+    onload(props.onload[0], props.onload[1], el)
 
-  return { el, avatar, setBounds, on, move, resize, bounds, draw }
+  return { el, avatar, setBounds, on, move, resize, bounds, draw, remove }
 }
 
 const grab = sel => document.querySelector(sel)
-const onload = (ids, fn) => setTimeout(() => {
+const onload = (ids, fn, props) => setTimeout(() => {
   let e = {}
   ids.forEach(id => e[id.substr(1)] = grab(id))
-  fn(e)
+  fn(e, props)
 }, 0)
 
 export default { rect, sprite, res, scale, grab, onload }

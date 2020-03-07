@@ -73,7 +73,6 @@ nav a, .link{
   padding: 4px 8px;
   box-shadow: 5px 5px 5px var(--lobby-btn-bs1), -5px -5px 5px var(--lobby-btn-bs2);
   background: linear-gradient(145deg, #ffffff10, #00000010);
-  text-decoration: underline;
 }
 
 .link{
@@ -88,9 +87,10 @@ nav a, .link{
 }
 
 .lobby, .cookbook{
-  margin: 10vh 10vw;
+  margin: 5vh 10vw;
   color: white;
   transition: .3s;
+  animation: enter .15s;
 }
 
 hr{
@@ -103,24 +103,87 @@ hr{
   padding: 8px;
   margin: 8px 0;
   overflow-y: auto;
-  border-radius: 4px;
+  border-radius: 2px;
   background: linear-gradient(145deg, #ffffff24, #ffffff20);
 }
 
 @media screen and (min-width: 800px){
   .d2{
     width: 20%;
+    padding: 8px;
+    box-sizing: border-box;
   }
 
   .d3{
     width: 30%;
+    margin: 8px;
+    box-sizing: border-box;
   }
 
   .d7{
     width: 70%;
+    margin: 32px;
+    box-sizing: border-box;
   }
 
   .d8{
     width: 80%;
+    margin: 32px;
+    box-sizing: border-box;
+  }
+
+  .drow{
+    display: flex;
+  }
+}
+
+.hidden{
+  display: none !important;
+}
+
+.links .link{
+  width: 100%;  
+  margin: 8px 0;
+  display: block;
+}
+
+*::-webkit-scrollbar {
+  width: .8em;
+}
+ 
+*::-webkit-scrollbar-track {
+  box-shadow: 5px 5px 5px var(--lobby-btn-bs1), -5px -5px 5px var(--lobby-btn-bs2);
+}
+ 
+*::-webkit-scrollbar-thumb {
+  background-color: cyan;
+  outline: 1px solid slategrey;
+  box-shadow: 5px 5px 5px var(--lobby-btn-bs1), -5px -5px 5px var(--lobby-btn-bs2), inset 0 0 6px rgba(0, 0, 0, 0.3);
+  border-radius: 8px;
+}
+
+.exit{
+  animation: exit .15s
+}
+
+@keyframes exit{
+  0%{
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100%{
+    opacity: 0;
+    transform: translateY(10px);
+  }
+}
+
+@keyframes enter{
+  0%{
+    opacity: .3;
+    transform: translateY(-10px);
+  }
+  100%{
+    opacity: 1;
+    transform: translateY(0);
   }
 }

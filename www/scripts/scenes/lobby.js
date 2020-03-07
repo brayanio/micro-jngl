@@ -8,42 +8,52 @@ import roomService from '../services/room.js'
 
 let container, interval, newRoomInterval
 export default {
-  run: async (router) => {
-
-    let rooms = await roomService.getOpenRooms()
-
-    container = gui.sprite({
-      classList: ['lobby'],
+  run: async () => {
+    return container = gui.sprite({
+      classList: ['lobby', 'drow'],
       template: `
-        <strong>Welcome to the</strong>
-        <h1><small id="micro">Micro</small>JNGL</h1>
-        <nav>
-          <a href="#/cookbook">Cookbook</a>
-        </nav>
-        <div class="rooms card">
-          <strong>
-            ${rooms.length > 0 ? `${rooms.length} Room(s)` : 'No Rooms Available'}
-          </strong>
+        <div class="d3">
+          <strong>Welcome to the</strong>
+          <h1><small id="micro">Micro</small>JNGL</h1>
+          <nav>
+            <a href="#/cookbook">Cookbook</a>
+          </nav>
+          <hr>
+          <div class="links">
+            <button id="refresh" class="link">Refresh</button>
+            <button id="createRoom" class="link">Create Room</button>
+            <button id="clearRooms" class="link">Clear Rooms</button>
+          </div>
           <hr>
         </div>
-        <button id="createRoom" class="lobby-menubtn">Create Room</button>
-        <button id="clearRooms" class="lobby-menubtn">Clear Rooms</button>
+        <div class="d7">
+          <div class="rooms card">
+            <strong>No Rooms Available</strong>
+            <hr>
+          </div>
+        </div>
       `,
-      onload: [['.rooms'], ui => {
+      onload: [['.rooms', '#refresh', '#clearRooms'], ui => {
         Micro(interval, 5, true)
         CreateRoom()
         ClearRooms()
 
-        if(rooms.length > 0){
-          let roomContainer = { el: ui.rooms }
-          let roomCards = rooms.map(r => RoomCard(r, roomContainer))
-        }
+        let roomContainer = { el: ui.rooms }
+        let roomCards = [], rooms = []
+
+        ui.refresh.addEventListener('click', async () => {
+          rooms = await roomService.getOpenRooms()  
+          roomCards.forEach(card => card.remove())
+          roomCards = rooms.map(r => RoomCard(r, roomContainer))
+        })
 
         newRoomInterval = roomService.onNewRoom(r => {
             let roomContainer = { el: ui.rooms }
             RoomCard(r, roomContainer)
             rooms.push(r)
         })
+
+        ui.refresh.click()
       }],
       append: { el: document.body }
     })

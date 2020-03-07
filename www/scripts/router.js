@@ -7,7 +7,7 @@ const routes = {
   'cookbook': cookbook
 }
 
-let currentRoute
+let currentRoute, page
 const checkRoute = () => {
   let routeName = location.hash
   if(routeName)
@@ -15,11 +15,15 @@ const checkRoute = () => {
   if(!routeName)
     routeName = '/'
   const route = routes[routeName]
-  if(route){
-    if(currentRoute)
-      currentRoute.cleanup()
-    currentRoute = route
-    route.run()
+  if(route && currentRoute !== route){
+    if(page)
+      page.el.classList.add('exit')
+    setTimeout(async () => {
+      if(currentRoute)
+        currentRoute.cleanup()
+      currentRoute = route
+      page = await route.run()        
+    }, 149)
   }
 }
 

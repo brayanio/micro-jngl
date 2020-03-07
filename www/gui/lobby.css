@@ -28,7 +28,7 @@
 
 .lobby .rooms{
   min-height: 10vh;
-  max-height: 60vh;
+  max-height: 80vh;
 }
 
 .lobby-menubtn:hover, .lobby .room-card button:hover, nav a:hover, .link:hover{
@@ -48,7 +48,7 @@
 
 @media screen and (max-width: 800px){
   .lobby, .cookbook{
-    margin: 1vh 1vw;
+    margin: 1vh 1vw !important;
     color: rgba(255,255,255,0.7);
   }
   .lobby .room-card{
@@ -57,6 +57,10 @@
   }
   .lobby .room-card button{
     margin-top: 8px;
+  }
+  .lobby .rooms{
+    min-height: 10vh;
+    max-height: 60vh;
   }
 }
 
