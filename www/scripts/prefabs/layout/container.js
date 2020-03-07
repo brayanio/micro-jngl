@@ -1,8 +1,8 @@
 import nggt from '../../nggt.js'
+import Join from './join.js'
 
-export default (el, classList, ...args) => {
-  let template = `<${el} class="${classList.join(' ')}">`
-  args.forEach(a => template += a)
-  template += `</${el}>`
-  return nggt.create({ template })
-}
+export default (el, classList, ...args) => Join(
+  `<${el} class="${classList.join(' ')}">`,
+    ...args,
+  `</${el}>`
+)
