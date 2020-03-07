@@ -1,6 +1,6 @@
 import nggt from '../../nggt.js'
-
 import roomService from '../../services/room.js'
+import RoomCard from './room-card.js'
 
 export default () => {
   let template = `
@@ -18,7 +18,7 @@ export default () => {
       let openRooms = await roomService.data.openRooms()
       openRooms.onChange(rooms => {
         let html = template
-        rooms.forEach(room => html += `<span>${room.meta.id}</span>`)
+        rooms.forEach(room => html += RoomCard(room))
         ui.container.innerHTML = html
       })
     }
