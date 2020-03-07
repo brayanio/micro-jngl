@@ -73,7 +73,7 @@ const sprite = props => {
   if (props.onload)
     onload(props.onload[0], props.onload[1], el)
 
-  return { el, avatar, setBounds, on, move, resize, bounds, draw, remove }
+  return { el, avatar, setBounds, on, move, resize, bounds, draw, remove, out: props.out }
 }
 
 const grab = sel => document.querySelector(sel)

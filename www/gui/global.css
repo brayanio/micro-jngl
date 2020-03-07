@@ -187,3 +187,8 @@ hr{
     transform: translateY(0);
   }
 }
+
+.micro{
+  font-family: monospace;
+  color: cyan;
+}
