@@ -5,25 +5,10 @@
   --lobby-btn-bs2: #41013e;
 }
 
-.lobby{
-  margin: 10vh 10vw;
-  color: white;
-  transition: .3s;
-}
-
 .lobby h1{
   font-size: 2rem;
   margin: 0;
   margin-bottom: 8px;
-}
-
-.lobby .rooms{
-  min-height: 10vh;
-  max-height: 60vh;
-  background-color: rgba(255, 255, 255, 0.15);
-  padding: 8px;
-  margin: 8px 0;
-  overflow-y: auto;
 }
 
 .lobby-menubtn{
@@ -31,9 +16,8 @@
   margin: 8px 0;
   background: linear-gradient(145deg, var(--lobby-btn-bg1), var(--lobby-btn-bg2));
   padding: 8px;
-  font-size: 1.5rem;
+  font-size: 1.1rem;
   color: white;
-  text-shadow: 2px 2px rgba(0, 0, 0, .3);
   font-weight: bold;
   box-shadow: 5px 5px 5px var(--lobby-btn-bs1), -5px -5px 5px var(--lobby-btn-bs2);
   border-radius: 8px;
@@ -42,7 +26,12 @@
   transition: .3s;
 }
 
-.lobby-menubtn:hover, .lobby .room-card button:hover, .lobby nav a:hover{
+.lobby .rooms{
+  min-height: 10vh;
+  max-height: 60vh;
+}
+
+.lobby-menubtn:hover, .lobby .room-card button:hover, nav a:hover, .link:hover{
   outline: 1px solid cyan;
   color: cyan;
 }
@@ -58,7 +47,7 @@
 }
 
 @media screen and (max-width: 800px){
-  .lobby{
+  .lobby, .cookbook{
     margin: 1vh 1vw;
     color: rgba(255,255,255,0.7);
   }
@@ -83,34 +72,7 @@
   padding: 4px 80px;
 }
 
-.lobby hr{
-  border: 1px solid rgba(255, 255, 255, .1);
-  margin: 16px 40%;
-}
-
 #micro{
   font-family: monospace;
   color: cyan;
-}
-
-.lobby nav{
-  display: flex;
-  flex-direction: row-reverse;
-}
-
-.lobby nav a{
-  color: cyan;
-  font-size: 1.1rem;
-  font-weight: bold;
-}
-
-.lobby nav a{
-  color: cyan;
-  font-size: 1.1rem;
-  font-weight: bold;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: .3s;
-  padding: 4px 8px;
-  box-shadow: 5px 5px 5px var(--lobby-btn-bs1), -5px -5px 5px var(--lobby-btn-bs2);
 }

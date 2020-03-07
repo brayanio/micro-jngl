@@ -1,3 +1,1 @@
-import lobby from './scenes/lobby.js'
-
-lobby.run()
+import router from './router.js'
