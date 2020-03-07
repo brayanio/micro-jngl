@@ -59,7 +59,6 @@ const create = props => {
       document.body.appendChild(root)
       cleanupAr.push(() => document.body.removeChild(root))
     }, 0)
-    return 
   } else if(props.run)
       runAr.push(onrun)
 

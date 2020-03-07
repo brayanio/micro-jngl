@@ -10,9 +10,9 @@ export default () => {
   
   return nggt.create({
     template: `
-    <div class="rooms card" id="container">
-      ${template}
-    </div>
+      <div class="rooms card" id="container">
+        ${template}
+      </div>
     `,
     run: async (ui, data) => {
       let openRooms = await roomService.data.openRooms()

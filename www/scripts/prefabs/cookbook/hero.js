@@ -8,9 +8,9 @@ export default () => nggt.create({
     </div>
   `,
   run: (ui, data) => {
-    data.tab.onChange(tab => {
-      if(tab === 'hero')
+    // data.tab.onChange(tab => {
+    //   if(tab === 'hero')
 
-    })
+    // })
   }
 })
