@@ -3,6 +3,7 @@ import Container from './container.js'
 import Header from './header.js'
 import Join from './join.js'
 import LinkBtn from './link-btn.js'
+import Modal from './modal.js'
 import Nav from './nav.js'
 
 export default {
@@ -11,5 +12,6 @@ export default {
   Header,
   Join,
   LinkBtn,
+  Modal,
   Nav
 }

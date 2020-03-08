@@ -1,0 +1,30 @@
+.login label{
+  display: flex;
+  margin: 16px 8px;
+}
+.login label strong{
+  width: 20%;
+  margin: 4px;
+}
+
+.login label input{
+  width: 80%;
+  margin: 0 16px;
+  padding: 4px;
+  border: none;
+  box-shadow: 5px 5px 5px var(--lobby-btn-bs1), -5px -5px 5px var(--lobby-btn-bs2);
+  background-color: #ffffff90;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border-radius: 8px;
+}
+
+@media screen and (max-width: 800px){
+ .login label{
+   flex-direction: column;
+  } 
+  .login label input{
+    width: auto;
+    display: block;
+  }
+}

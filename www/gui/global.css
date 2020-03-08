@@ -1,6 +1,7 @@
 @import './hotkey-bar.css';
 @import './lobby.css';
 @import './cookbook.css';
+@import './login.css';
 
 * {
     font-family: sans-serif;
@@ -102,7 +103,7 @@ hr{
 .card{
   background-color: rgba(255, 255, 255, 0.15);
   padding: 8px;
-  margin: 16px 0;
+  margin: 8px;
   overflow-y: auto;
   border-radius: 2px;
   background: linear-gradient(145deg, #ffffff24, #ffffff20);
@@ -123,6 +124,18 @@ hr{
   .d3{
     width: 30%;
     margin: 8px;
+    box-sizing: border-box;
+  }
+
+  .d4{
+    width: 30%;
+    margin: 8px;
+    box-sizing: border-box;
+  }
+
+  .d6{
+    width: 70%;
+    margin: 24px;
     box-sizing: border-box;
   }
 
@@ -202,4 +215,26 @@ hr{
   font-size: 2rem;
   margin: 0;
   margin-bottom: 8px;
+}
+
+.modal-bg{
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: linear-gradient(145deg, black, transparent);
+}
+
+.right{
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.modal{
+  position: relative;
+  left: 10%;
+  width: 80%;
+  top: 5%;
+  background-color: #320130;
 }
