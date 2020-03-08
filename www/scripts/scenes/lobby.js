@@ -15,6 +15,7 @@ export default () => {
           Prefabs.Container('div', ['card'],
             Prefabs.Nav('Cookbook'),
             Prefabs.Container('div', ['links'],
+              Prefabs.LinkBtn('Login', () => login.change(true)),
               Prefabs.LinkBtn('Refresh', () => roomService.getOpenRooms()),
               Prefabs.LinkBtn('Create Room', () => roomService.newRoom()),
               Prefabs.LinkBtn('Clear Rooms', () => roomService.clearRooms()),

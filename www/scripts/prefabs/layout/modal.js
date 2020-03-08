@@ -11,7 +11,9 @@ export default (dataObj, options, ...args) => {
         </div>
       </div>
     `,
-    run: (ui) => {
+    run: (ui, data) => {
+      console.log(data)
+      if(options.ui) data.change(obj => obj[options.ui] = ui)
       if(options.closeOnClick)
         ui.modal.addEventListener('click', e => {
           if(e.target === ui.modal)

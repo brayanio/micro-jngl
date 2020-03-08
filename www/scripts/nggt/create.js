@@ -7,7 +7,7 @@ export default (coreObj) => {
     //props: run, cleanup, template, isRoot, classList, auto
     let id = guid()
     const core = coreObj.val()
-    const data = () => core.cache
+    const data = core.cache
     const getUI = () => {
       let ui = {}
       core.root.querySelectorAll(`[${id}]`).forEach(e => {
@@ -31,8 +31,6 @@ export default (coreObj) => {
       core.cleanupAr.push(props.cleanup)
 
     if(props.isRoot){
-      if(props.data)
-        coreObj.change(obj => obj.cache = props.data)
       core.root.classList.add(...props.classList)
       core.root.innerHTML = props.template
       setTimeout(() => {

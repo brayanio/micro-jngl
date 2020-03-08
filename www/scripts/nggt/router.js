@@ -1,3 +1,5 @@
+import dataObj from './data-obj.js'
+
 export default coreObj => {
   const router = (routes, child) => {
     const core = coreObj.val()
@@ -16,7 +18,7 @@ export default coreObj => {
         coreObj.change(obj => {
           obj.currentRoute = route
           obj.cleanupAr = []
-          obj.cache = {}
+          obj.cache = dataObj({})
           obj.root = document.createElement('div')
         })
         route()

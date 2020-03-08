@@ -8,7 +8,7 @@ let core = DataObj({
   currentRoute: null, 
   cleanupAr: [], 
   runAr: [], 
-  cache: {}
+  cache: DataObj({})
 })
 
 let router = Router(core)

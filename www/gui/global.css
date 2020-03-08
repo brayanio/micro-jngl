@@ -238,3 +238,32 @@ hr{
   top: 5%;
   background-color: #320130;
 }
+
+.center-all{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.icon-btn{
+  background: transparent;
+  color: #ffffff90;
+  padding: 0;
+  cursor: pointer;
+}
+
+.icon-btn i{
+  font-weight: bold;
+  font-size: 2rem;
+}
+
+.icon-btn:hover i{
+  color: cyan;
+  outline: 1px solid cyan;
+}
+
+.icon-btn:hover{
+  background: linear-gradient(145deg, #ffffff15, #ffffff05);
+}
