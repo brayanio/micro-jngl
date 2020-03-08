@@ -1,23 +1,28 @@
-import cache from './cache.js'
+import nggt from '../nggt.js'
+
+const roomService = nggt.service({
+  openRooms: nggt.dataObj([]),
+  newRoom: nggt.dataObj()
+})
 
 const getOpenRooms = async () => {
-  await cache().read('openRooms', 'getRoom', { isOpen: true })
-  return cache().openRooms
+  await roomService.read('openRooms', 'getRoom', { isOpen: true })
+  return roomService.openRooms
 }
 
 const newRoom = async () => {
-  await cache().read('newRoom', 'newRoom')
-  return cache().newRoom
+  await roomService.read('newRoom', 'newRoom')
+  return roomService.newRoom
 }
 
 const clearRooms = async () => {
-  await cache().read('openRooms', 'clearRooms')
-  return cache().openRooms
+  await roomService.read('openRooms', 'clearRooms')
+  return roomService.openRooms
 }
 
-const data = {
-  openRooms: () => cache().openRooms || getOpenRooms(),
-  newRoom: () => cache().newRoom || newRoom()
-}
+roomService.newRoom.onChange(room => room
+  ? roomService.openRooms.change(ar => ar.push(room))
+  : null
+)
 
-export default { getOpenRooms, newRoom, clearRooms, data }
+export default { getOpenRooms, newRoom, clearRooms, service: roomService }
