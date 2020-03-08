@@ -9,6 +9,9 @@ export default () => {
     isRoot: true,
     classList: ['lobby'],
     template: Prefabs.Join(
+      `<div class="exit-btn">`,
+        Prefabs.IconBtn('close', () => fetch('http://localhost:4404')),
+      `</div>`,
       Prefabs.ColGrid(3, 7, 
         Prefabs.Join(
           Prefabs.Header('JNGL', 'Micro'),
@@ -18,8 +21,7 @@ export default () => {
               Prefabs.LinkBtn('Login', () => login.change(true)),
               Prefabs.LinkBtn('Refresh', () => roomService.getOpenRooms()),
               Prefabs.LinkBtn('Create Room', () => roomService.newRoom()),
-              Prefabs.LinkBtn('Clear Rooms', () => roomService.clearRooms()),
-              Prefabs.LinkBtn('Exit', () => fetch('http://localhost:4404'))
+              Prefabs.LinkBtn('Clear Rooms', () => roomService.clearRooms())
             )
           )
         ),

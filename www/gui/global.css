@@ -280,3 +280,16 @@ hr{
 .icon-btn:hover{
   background: linear-gradient(145deg, #ffffff15, #ffffff05);
 }
+
+.exit-btn{
+  position: absolute;
+  top: 2.5%;
+  left: 2.5%;
+}
+
+@media screen and (max-width: 800px){
+  .exit-btn {
+    left: 90%;
+    right: 5%;
+  }
+}
