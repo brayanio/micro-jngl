@@ -61,10 +61,11 @@ button{
 nav{
   display: flex;
   flex-direction: row-reverse;
+  margin: 8px 0;
 }
 
 nav a, .link{
-  color: cyan;
+  color: #ffffff90;
   font-size: 1.1rem;
   font-weight: bold;
   border-radius: 8px;
@@ -76,7 +77,7 @@ nav a, .link{
 }
 
 .link{
-  color: white;
+  color: #ffffff90;
   margin: 4px 8px;
 }
 
@@ -86,28 +87,33 @@ nav a, .link{
   text-decoration: none;
 }
 
-.lobby, .cookbook{
+.lobby, .cookbook, .room-lobby{
   margin: 5vh 10vw;
-  color: white;
+  color: #ffffff90;
   transition: .3s;
   animation: enter .15s;
 }
 
 hr{
-  border: 1px solid rgba(255, 255, 255, .1);
-  margin: 16px 40%;
+  border: 3px solid rgba(255, 255, 255, .1);
+  margin: 24px -8px;
 }
 
 .card{
   background-color: rgba(255, 255, 255, 0.15);
   padding: 8px;
-  margin: 8px 0;
+  margin: 16px 0;
   overflow-y: auto;
   border-radius: 2px;
   background: linear-gradient(145deg, #ffffff24, #ffffff20);
 }
 
 @media screen and (min-width: 800px){
+  hr{
+    border: 1px solid rgba(255, 255, 255, .1);
+    margin: 16px 40%;
+  }
+
   .d2{
     width: 20%;
     padding: 8px;
@@ -157,7 +163,6 @@ hr{
  
 *::-webkit-scrollbar-thumb {
   background-color: cyan;
-  outline: 1px solid slategrey;
   box-shadow: 5px 5px 5px var(--lobby-btn-bs1), -5px -5px 5px var(--lobby-btn-bs2), inset 0 0 6px rgba(0, 0, 0, 0.3);
   border-radius: 8px;
 }

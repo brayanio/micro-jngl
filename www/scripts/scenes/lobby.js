@@ -8,15 +8,14 @@ export default () => nggt.create({
   template: Prefabs.ColGrid(3, 7, 
     Prefabs.Join(
       Prefabs.Header('JNGL', 'Micro'),
-      `<hr>`,
-      Prefabs.Nav('Cookbook'),
-      `<hr>`,
-      Prefabs.Container('div', ['links'],
-        Prefabs.LinkBtn('Refresh', () => roomService.getOpenRooms()),
-        Prefabs.LinkBtn('Create Room', () => roomService.newRoom()),
-        Prefabs.LinkBtn('Clear Rooms', () => roomService.clearRooms()),
-      ),
-      `<hr>`
+      Prefabs.Container('div', ['card'],
+        Prefabs.Nav('Cookbook'),
+        Prefabs.Container('div', ['links'],
+          Prefabs.LinkBtn('Refresh', () => roomService.getOpenRooms()),
+          Prefabs.LinkBtn('Create Room', () => roomService.newRoom()),
+          Prefabs.LinkBtn('Clear Rooms', () => roomService.clearRooms()),
+        )
+      )
     ),
     Prefabs.RoomView()
   )

@@ -8,17 +8,16 @@ export default () => nggt.create({
   template: Prefabs.ColGrid(3, 7, 
     Prefabs.Join(
       Prefabs.Header('Book', 'Cook'),
-      `<hr>`,
-      Prefabs.Nav('Lobby'),
-      `<hr>`,
-      Prefabs.Container('div', ['links'],
-        Prefabs.LinkBtn('Heros', () => {}),
-        Prefabs.LinkBtn('Units', () => {}),
-        Prefabs.LinkBtn('Basics', () => {}),
-        Prefabs.LinkBtn('Advanced', () => {}),
-        Prefabs.LinkBtn('Dojo', () => {})
-      ),
-      `<hr>`
+      Prefabs.Container('div', ['card'],
+        Prefabs.Nav('Lobby'),
+        Prefabs.Container('div', ['links'],
+          Prefabs.LinkBtn('Heros', () => {}),
+          Prefabs.LinkBtn('Units', () => {}),
+          Prefabs.LinkBtn('Basics', () => {}),
+          Prefabs.LinkBtn('Advanced', () => {}),
+          Prefabs.LinkBtn('Dojo', () => {})
+        )
+      )
     ),
     `
     <div>

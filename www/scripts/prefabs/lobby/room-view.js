@@ -3,25 +3,30 @@ import Room from '../../services/room.js'
 import RoomCard from './room-card.js'
 import Join from '../layout/join.js'
 
+
 export default () => {
-  let temp = `
-    <strong>No Rooms Available</strong>
+  let title = length => `
+    <strong>${length > 0 ? length : 'No'} Rooms Available</strong>
     <hr>
   `
   
+  let openRoomSub
   return nggt.create({
     template: `
       <div class="rooms card" id="container">
-        ${temp}
+        ${title(0)}
       </div>
     `,
     run: async (ui, data) => {
-      Room.service.openRooms.onChange(rooms => {
-        let html = Join(temp, ...rooms.map(room => RoomCard(room)))
+      openRoomSub = Room.service.openRooms.onChange(rooms => {
+        let html = Join(title(rooms.length), ...rooms.map(room => RoomCard(room)))
         ui.container.innerHTML = html
       })
       if(Room.service.openRooms.val().length === 0)
         Room.getOpenRooms()
+    },
+    cleanup: () => {
+      Room.service.openRooms.cleanup(openRoomSub)
     }
   })
 }

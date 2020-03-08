@@ -4,18 +4,26 @@ const guid = (r, v) =>
 
 export default (coreObj) => {
   return props => {
-    //props: run, cleanup, template, isRoot, classList
+    //props: run, cleanup, template, isRoot, classList, auto
     let id = guid()
     const core = coreObj.val()
     const data = () => core.cache
-    const onrun = () => {
+    const getUI = () => {
       let ui = {}
       core.root.querySelectorAll(`[${id}]`).forEach(e => {
         ui[e.getAttribute(id)] = e
         e.removeAttribute(id)
       })
+      return ui
+    }
+    const onrun = () => {
+      const ui = getUI()
       props.run(ui, data)
     }
+    const onauto = () => setTimeout(() => {
+      const ui = getUI()
+      props.auto(ui, data)
+    }, 15)
 
     props.template = props.template.split('id="').join(id + '="')
 
@@ -38,6 +46,8 @@ export default (coreObj) => {
       }, 0)
     } else if(props.run)
         coreObj.change(obj => obj.runAr.push(onrun))
+      else if(props.auto)
+        onauto()
 
     return props.template
   }
