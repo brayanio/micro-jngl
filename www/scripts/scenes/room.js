@@ -14,9 +14,12 @@ export default () => {
     isRoot: true,
     classList: ['room-lobby'],
     template: Prefabs.ColGrid(3, 7, 
-      Prefabs.Container('div', ['card'],
-        `<strong>${joinedRoom.val().meta.id}</strong>`,
-        Prefabs.Nav('Lobby')
+      Prefabs.Join(
+        Prefabs.Header('Zone', 'Danger'),
+        Prefabs.Container('div', ['card'],
+          `<strong>${joinedRoom.val().meta.id}</strong>`,
+          Prefabs.Nav('Lobby')
+        )
       ),
       Prefabs.Join(
         Prefabs.Container('div', ['card'],

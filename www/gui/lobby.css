@@ -5,19 +5,13 @@
   --lobby-btn-bs2: #41013e;
 }
 
-.lobby h1{
-  font-size: 2rem;
-  margin: 0;
-  margin-bottom: 8px;
-}
-
 .lobby-menubtn{
   width: 100%;
   margin: 8px 0;
   background: linear-gradient(145deg, var(--lobby-btn-bg1), var(--lobby-btn-bg2));
   padding: 8px;
   font-size: 1.1rem;
-  color: white;
+  color: #ffffff90;
   font-weight: bold;
   box-shadow: 5px 5px 5px var(--lobby-btn-bs1), -5px -5px 5px var(--lobby-btn-bs2);
   border-radius: 8px;
@@ -67,7 +61,7 @@
 .lobby .room-card button{
   background: linear-gradient(145deg, var(--lobby-btn-bg1), var(--lobby-btn-bg2));
   font-size: 1rem;
-  color: white;
+  color: #ffffff90;
   font-weight: bold;
   border-radius: 8px;
   border: none;

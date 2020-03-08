@@ -197,3 +197,9 @@ hr{
   font-family: monospace;
   color: cyan;
 }
+
+.header{
+  font-size: 2rem;
+  margin: 0;
+  margin-bottom: 8px;
+}
