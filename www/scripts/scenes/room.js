@@ -16,15 +16,14 @@ export default () => {
     template: Prefabs.ColGrid(3, 7, 
       Prefabs.Join(
         Prefabs.Header('Zone', 'Danger'),
-        Prefabs.Container('div', ['card'],
+        Prefabs.Container('div', ['panel'],
           `<strong>${joinedRoom.val().meta.id}</strong>`,
           Prefabs.Nav('Lobby')
         )
       ),
       Prefabs.Join(
-        Prefabs.Container('div', ['card'],
-          `<strong>Room Lobby</strong>`,
-          '<hr>'
+        Prefabs.Container('div', ['panel'],
+          `<strong>Room Lobby</strong>`
         )
       )
     )

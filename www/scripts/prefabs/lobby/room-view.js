@@ -6,14 +6,14 @@ import Join from '../layout/join.js'
 
 export default () => {
   let title = length => `
-    <strong>${length > 0 ? length : 'No'} Rooms Available</strong>
     <hr>
+    <strong>${length > 0 ? length : 'No'} Rooms Available</strong>
   `
   
   let openRoomSub
   return nggt.create({
     template: `
-      <div class="rooms card" id="container">
+      <div class="rooms panel" id="container">
         ${title(0)}
       </div>
     `,

@@ -41,10 +41,6 @@
 }
 
 @media screen and (max-width: 800px){
-  .lobby, .cookbook{
-    margin: 1vh 1vw !important;
-    color: rgba(255,255,255,0.7);
-  }
   .lobby .room-card{
     justify-content: start;
     flex-direction: column;

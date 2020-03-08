@@ -9,7 +9,7 @@ export default () => {
     template: Prefabs.ColGrid(3, 7, 
       Prefabs.Join(
         Prefabs.Header('Book', 'Cook'),
-        Prefabs.Container('div', ['card'],
+        Prefabs.Container('div', ['panel'],
           Prefabs.Nav('Lobby'),
           Prefabs.Container('div', ['links'],
             Prefabs.LinkBtn('Heros', () => modal.change(true)),

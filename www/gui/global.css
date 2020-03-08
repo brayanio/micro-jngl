@@ -35,7 +35,7 @@
 
 html{
     font-size: 1em;
-    background: #320130;
+    background-color: #320130;
     color: var(--text);
 }
 
@@ -45,7 +45,7 @@ body{
     width: 100vw;
     height: 100vh;
     overflow: hidden;
-    background: #320130;
+    background: linear-gradient(145deg, #ffffff24, #ffffff20);
 }
 
 button{
@@ -89,10 +89,19 @@ nav a, .link{
 }
 
 .lobby, .cookbook, .room-lobby{
-  margin: 5vh 10vw;
+  margin: 0;
+  padding: 5vh 10vw;
   color: #ffffff90;
   transition: .3s;
   animation: enter .15s;
+}
+
+
+@media screen and (max-width: 800px){
+  .lobby, .cookbook, .room-lobby{
+    padding: 1vh 1vw;
+    color: rgba(255,255,255,0.7);
+  }
 }
 
 hr{
@@ -107,6 +116,10 @@ hr{
   overflow-y: auto;
   border-radius: 2px;
   background: linear-gradient(145deg, #ffffff24, #ffffff20);
+}
+
+.panel{
+  padding: 8px;
 }
 
 @media screen and (min-width: 800px){
@@ -135,19 +148,19 @@ hr{
 
   .d6{
     width: 70%;
-    margin: 24px;
+    margin: 8px 24px;
     box-sizing: border-box;
   }
 
   .d7{
     width: 70%;
-    margin: 32px;
+    margin: 8px 32px;
     box-sizing: border-box;
   }
 
   .d8{
     width: 80%;
-    margin: 32px;
+    margin: 8px 32px;
     box-sizing: border-box;
   }
 

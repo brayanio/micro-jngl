@@ -12,9 +12,9 @@ export default () => {
       Prefabs.ColGrid(3, 7, 
         Prefabs.Join(
           Prefabs.Header('JNGL', 'Micro'),
-          Prefabs.Container('div', ['card'],
+          Prefabs.Container('div', [],
             Prefabs.Nav('Cookbook'),
-            Prefabs.Container('div', ['links'],
+            Prefabs.Container('div', ['links', 'panel'],
               Prefabs.LinkBtn('Login', () => login.change(true)),
               Prefabs.LinkBtn('Refresh', () => roomService.getOpenRooms()),
               Prefabs.LinkBtn('Create Room', () => roomService.newRoom()),
@@ -26,9 +26,6 @@ export default () => {
         Prefabs.RoomView()
       ),
       Prefabs.Login(login)
-    ),
-    run: (ui, data) => {
-      setTimeout(()=>login.change(true), 3000)
-    }
+    )
   })
 }
