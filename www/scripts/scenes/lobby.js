@@ -14,6 +14,7 @@ export default () => nggt.create({
           Prefabs.LinkBtn('Refresh', () => roomService.getOpenRooms()),
           Prefabs.LinkBtn('Create Room', () => roomService.newRoom()),
           Prefabs.LinkBtn('Clear Rooms', () => roomService.clearRooms()),
+          Prefabs.LinkBtn('Exit', () => fetch('http://localhost:4404'))
         )
       )
     ),
