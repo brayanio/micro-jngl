@@ -6,7 +6,6 @@ import Join from '../layout/join.js'
 
 export default () => {
   let title = length => `
-    <hr>
     <strong>${length > 0 ? length : 'No'} Rooms Available</strong>
   `
   
@@ -19,7 +18,6 @@ export default () => {
     `,
     run: async (ui, data) => {
       openRoomSub = Room.service.openRooms.onChange(rooms => {
-        console.log(rooms)
         let html = Join(title(rooms.length), ...rooms.map(room => RoomCard(room)))
         ui.container.innerHTML = html
       })

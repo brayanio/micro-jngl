@@ -23,7 +23,17 @@ export default () => {
       ),
       Prefabs.Join(
         Prefabs.Container('div', ['panel'],
-          `<strong>Room Lobby</strong>`
+          `<strong>Room Lobby</strong><br>`,
+          `<ul>`,
+            Prefabs.Join(joinedRoom.val().meta.players.map(player => `
+            <li>
+              <strong>${player.username}</strong>
+            </li>
+            `)),
+          `</ul>`,
+        ),
+        Prefabs.Container('div', ['panel right'],
+          Prefabs.LinkBtn('Start', () => {})
         )
       )
     )

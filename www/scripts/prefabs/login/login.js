@@ -107,10 +107,8 @@ export default (dataObj) => nggt.create({
         ui.error.classList.remove('hidden')
         return console.error(`Auth Error: ` + profile.error)
       }
-      else {
+      else 
         dataObj.change(false)
-        console.log(profile)
-      }
     })
   },
   cleanup: () => {

@@ -23,6 +23,7 @@
 .lobby .rooms{
   min-height: 10vh;
   max-height: 80vh;
+  overflow-y: auto;
 }
 
 .lobby-menubtn:hover, .lobby .room-card button:hover, nav a:hover, .link:hover{
@@ -38,6 +39,7 @@
   justify-content: space-between;
   align-content: center;
   box-shadow: 5px 5px 5px var(--lobby-btn-bs1), -5px -5px 5px var(--lobby-btn-bs2);
+  border-radius: 2px;
 }
 
 @media screen and (max-width: 800px){
