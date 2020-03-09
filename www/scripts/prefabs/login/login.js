@@ -4,7 +4,7 @@ import authService from '../../services/auth.js'
 
 const modalOptions = {closeOnClick: true, classList: ['login'], ui: 'loginModal'}
 
-const authObj = nggt.dataObj({})
+const authObj = nggt.dataObj({username: '', password: '', confirm: '', email: ''})
 const state = nggt.dataObj('login')
 let stateSub
 export default (dataObj) => nggt.create({
@@ -31,6 +31,7 @@ export default (dataObj) => nggt.create({
           <strong>Email</strong>
           <input type="email" id="email">
         </label>
+        <div id="error" class="error-msg hidden"></div>
         `,
         Layout.Container('div', ['right'],
           `<span id="login">`,
@@ -94,8 +95,18 @@ export default (dataObj) => nggt.create({
 
     authService.service.profile.onChange(profile => {
       if(profile === undefined) return null
-      if(profile.error)
+      if(profile.error){
+        ui.error.innerText = profile.error
+        if(!ui.error.classList.contains('hidden')){
+          ui.error.classList.add('attempt')
+          setTimeout(() => {
+            if(ui.error)
+              ui.error.classList.remove('attempt')
+          }, 295)
+        }
+        ui.error.classList.remove('hidden')
         return console.error(`Auth Error: ` + profile.error)
+      }
       else {
         dataObj.change(false)
         console.log(profile)
