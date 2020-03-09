@@ -1,92 +1,87 @@
-@import './hotkey-bar.css';
-@import './lobby.css';
 @import './cookbook.css';
+@import './hotkey-bar.css';
+@import './layout.css';
+@import './lobby.css';
 @import './login.css';
 
-* {
-    font-family: sans-serif;
-    box-sizing: border-box;
+:root{
+  --shadow0: rgba(0, 0, 0, 0.06);
+  --shadow1: rgba(0, 0, 0, 0.12);
+  --shadow2: rgba(0, 0, 0, 0.18);
+  --shadow3: rgba(0, 0, 0, 0.24);
+  --shadow4: rgba(0, 0, 0, 0.30);
+  --shadow5: rgba(0, 0, 0, 0.36);
+  --light0: rgba(255, 255, 255, 0.06);
+  --light1: rgba(255, 255, 255, 0.12);
+  --light2: rgba(255, 255, 255, 0.18);
+  --light3: rgba(255, 255, 255, 0.24);
+  --light4: rgba(255, 255, 255, 0.30);
+  --light5: rgba(255, 255, 255, 0.36);
+  --round: 6px;
+
+  --btn0: var(--light2);
+  --btn1: var(--light3);
+  --btn0-hover: var(--light4);
+  --btn1-hover: var(--light5);
+
+  --text: #444;
+
+  font-size: 1em;
 }
 
-:root{
-    --shadow0: rgba(0, 0, 0, 0.06);
-    --shadow1: rgba(0, 0, 0, 0.12);
-    --shadow2: rgba(0, 0, 0, 0.18);
-    --shadow3: rgba(0, 0, 0, 0.24);
-    --shadow4: rgba(0, 0, 0, 0.30);
-    --shadow5: rgba(0, 0, 0, 0.36);
-    --light0: rgba(255, 255, 255, 0.06);
-    --light1: rgba(255, 255, 255, 0.12);
-    --light2: rgba(255, 255, 255, 0.18);
-    --light3: rgba(255, 255, 255, 0.24);
-    --light4: rgba(255, 255, 255, 0.30);
-    --light5: rgba(255, 255, 255, 0.36);
-    --round: 6px;
+* {
+  font-family: sans-serif;
+  box-sizing: border-box;
+}
 
-    --btn0: var(--light2);
-    --btn1: var(--light3);
-    --btn0-hover: var(--light4);
-    --btn1-hover: var(--light5);
-
-    --text: #444;
-
-    font-size: 1em;
+*::-webkit-scrollbar {
+  width: .8em;
+}
+ 
+*::-webkit-scrollbar-track {
+  box-shadow: 5px 5px 5px var(--lobby-btn-bs1), -5px -5px 5px var(--lobby-btn-bs2);
+}
+ 
+*::-webkit-scrollbar-thumb {
+  background-color: cyan;
+  box-shadow: 5px 5px 5px var(--lobby-btn-bs1), -5px -5px 5px var(--lobby-btn-bs2), inset 0 0 6px rgba(0, 0, 0, 0.3);
+  border-radius: 8px;
 }
 
 html{
-    font-size: 1em;
-    background-color: #320130;
-    color: var(--text);
+  font-size: 1em;
+  background-color: #320130;
+  color: var(--text);
 }
 
 body{
-    margin: 0;
-    padding: 0;
-    width: 100vw;
-    height: 100vh;
-    overflow: hidden;
-    background: linear-gradient(145deg, #ffffff24, #ffffff20);
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background: linear-gradient(145deg, #ffffff24, #ffffff20);
 }
 
 button{
-    /* remove button styling */
-    border: none;
-    font-size: 1em;
+  /* remove button styling */
+  border: none;
+  font-size: 1em;
 }
 
-.right{
-  display: flex;
-  justify-content: end;
+hr{
+  border: 3px solid rgba(255, 255, 255, .1);
+  margin: 24px -8px;
 }
 
-nav{
-  display: flex;
-  flex-direction: row-reverse;
-  margin: 8px 0;
+@media screen and (min-width: 800px){
+  hr{
+    border: 1px solid rgba(255, 255, 255, .1);
+    margin: 16px 40%;
+  }
 }
 
-nav a, .link{
-  color: #ffffff90;
-  font-size: 1.1rem;
-  font-weight: bold;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: .3s;
-  padding: 4px 8px;
-  box-shadow: 5px 5px 5px var(--lobby-btn-bs1), -5px -5px 5px var(--lobby-btn-bs2);
-  background: linear-gradient(145deg, #ffffff10, #00000010);
-}
-
-.link{
-  color: #ffffff90;
-  margin: 4px 8px;
-}
-
-.link:active, .link:focus, .link.active{
-  background: linear-gradient(145deg, #ffffff20, #00000020);
-  color: cyan;
-  text-decoration: none;
-}
+/* classes */
 
 .lobby, .cookbook, .room-lobby{
   margin: 0;
@@ -104,11 +99,6 @@ nav a, .link{
   }
 }
 
-hr{
-  border: 3px solid rgba(255, 255, 255, .1);
-  margin: 24px -8px;
-}
-
 .card{
   background-color: rgba(255, 255, 255, 0.15);
   padding: 8px;
@@ -122,75 +112,8 @@ hr{
   padding: 8px;
 }
 
-@media screen and (min-width: 800px){
-  hr{
-    border: 1px solid rgba(255, 255, 255, .1);
-    margin: 16px 40%;
-  }
-
-  .d2{
-    width: 20%;
-    padding: 8px;
-    box-sizing: border-box;
-  }
-
-  .d3{
-    width: 30%;
-    margin: 8px;
-    box-sizing: border-box;
-  }
-
-  .d4{
-    width: 30%;
-    margin: 8px;
-    box-sizing: border-box;
-  }
-
-  .d6{
-    width: 70%;
-    margin: 8px 24px;
-    box-sizing: border-box;
-  }
-
-  .d7{
-    width: 70%;
-    margin: 8px 32px;
-    box-sizing: border-box;
-  }
-
-  .d8{
-    width: 80%;
-    margin: 8px 32px;
-    box-sizing: border-box;
-  }
-
-  .drow{
-    display: flex;
-  }
-}
-
 .hidden{
   display: none !important;
-}
-
-.links .link{
-  width: 100%;  
-  margin: 8px 0;
-  display: block;
-}
-
-*::-webkit-scrollbar {
-  width: .8em;
-}
- 
-*::-webkit-scrollbar-track {
-  box-shadow: 5px 5px 5px var(--lobby-btn-bs1), -5px -5px 5px var(--lobby-btn-bs2);
-}
- 
-*::-webkit-scrollbar-thumb {
-  background-color: cyan;
-  box-shadow: 5px 5px 5px var(--lobby-btn-bs1), -5px -5px 5px var(--lobby-btn-bs2), inset 0 0 6px rgba(0, 0, 0, 0.3);
-  border-radius: 8px;
 }
 
 .exit{
@@ -219,37 +142,9 @@ hr{
   }
 }
 
-.micro{
-  font-family: monospace;
-  color: cyan;
-}
-
-.header{
-  font-size: 2rem;
-  margin: 0;
-  margin-bottom: 8px;
-}
-
-.modal-bg{
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  background: linear-gradient(145deg, black, transparent);
-}
-
 .right{
   display: flex;
   flex-direction: row-reverse;
-}
-
-.modal{
-  position: relative;
-  left: 10%;
-  width: 80%;
-  top: 5%;
-  background-color: #320130;
 }
 
 .center-all{
@@ -258,27 +153,6 @@ hr{
   align-items: center;
   justify-content: center;
   height: 100%;
-}
-
-.icon-btn{
-  background: transparent;
-  color: #ffffff90;
-  padding: 0;
-  cursor: pointer;
-}
-
-.icon-btn i{
-  font-weight: bold;
-  font-size: 2rem;
-}
-
-.icon-btn:hover i{
-  color: cyan;
-  outline: 1px solid cyan;
-}
-
-.icon-btn:hover{
-  background: linear-gradient(145deg, #ffffff15, #ffffff05);
 }
 
 .exit-btn{

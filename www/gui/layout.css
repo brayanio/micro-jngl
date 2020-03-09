@@ -1,0 +1,145 @@
+/* ColGrid */
+
+@media screen and (min-width: 800px){
+  .d2{
+    width: 20%;
+    padding: 8px;
+    box-sizing: border-box;
+  }
+
+  .d3{
+    width: 30%;
+    margin: 8px;
+    box-sizing: border-box;
+  }
+
+  .d4{
+    width: 30%;
+    margin: 8px;
+    box-sizing: border-box;
+  }
+
+  .d6{
+    width: 70%;
+    margin: 8px 24px;
+    box-sizing: border-box;
+  }
+
+  .d7{
+    width: 70%;
+    margin: 8px 32px;
+    box-sizing: border-box;
+  }
+
+  .d8{
+    width: 80%;
+    margin: 8px 32px;
+    box-sizing: border-box;
+  }
+
+  .drow{
+    display: flex;
+  }
+}
+
+/* Header */
+
+.micro{
+  font-family: monospace;
+  color: cyan;
+}
+
+.header{
+  font-size: 2rem;
+  margin: 0;
+  margin-bottom: 8px;
+}
+
+/* IconBtn */
+
+.icon-btn{
+  background: transparent;
+  color: #ffffff90;
+  padding: 0;
+  cursor: pointer;
+}
+
+.icon-btn i{
+  font-weight: bold;
+  font-size: 2rem;
+}
+
+.icon-btn:hover i{
+  color: cyan;
+  outline: 1px solid cyan;
+}
+
+.icon-btn:hover{
+  background: linear-gradient(145deg, #ffffff15, #ffffff05);
+}
+
+/* LinkBtn */
+
+.link{
+  color: #ffffff90;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: .3s;
+  padding: 4px 8px;
+  box-shadow: 5px 5px 5px var(--lobby-btn-bs1), -5px -5px 5px var(--lobby-btn-bs2);
+  background: linear-gradient(145deg, #ffffff10, #00000010);
+  margin: 4px 8px;
+}
+
+.link:active, .link:focus, .link.active{
+  background: linear-gradient(145deg, #ffffff20, #00000020);
+  color: cyan;
+  text-decoration: none;
+}
+
+.links .link{
+  width: 100%;  
+  margin: 8px 0;
+  display: block;
+}
+
+/* Modal */
+
+.modal-bg{
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: linear-gradient(145deg, black, transparent);
+}
+
+.modal{
+  position: relative;
+  left: 10%;
+  width: 80%;
+  top: 5%;
+  background-color: #320130;
+}
+
+/* nav */
+
+nav{
+  display: flex;
+  flex-direction: row-reverse;
+  margin: 8px 0;
+}
+
+nav a{
+  color: #ffffff90;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: .3s;
+  padding: 4px 8px;
+  box-shadow: 5px 5px 5px var(--lobby-btn-bs1), -5px -5px 5px var(--lobby-btn-bs2);
+  background: linear-gradient(145deg, #ffffff10, #00000010);
+}
