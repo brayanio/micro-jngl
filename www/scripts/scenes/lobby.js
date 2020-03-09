@@ -1,10 +1,12 @@
 import nggt from '../nggt.js'
 import Prefabs from '../prefabs/module.js'
 import roomService from '../services/room.js'
+import authService from '../services/auth.js'
 
 export default () => {
   let login = nggt.dataObj(false)
 
+  let authSub
   return nggt.create({
     isRoot: true,
     classList: ['lobby'],
@@ -18,16 +20,29 @@ export default () => {
           Prefabs.Container('div', [],
             Prefabs.Nav('Cookbook'),
             Prefabs.Container('div', ['links', 'panel'],
-              Prefabs.LinkBtn('Login', () => login.change(true)),
-              Prefabs.LinkBtn('Refresh', () => roomService.getOpenRooms()),
-              Prefabs.LinkBtn('Create Room', () => roomService.newRoom()),
-              Prefabs.LinkBtn('Clear Rooms', () => roomService.clearRooms())
+              `<div id="login">`,
+                Prefabs.LinkBtn('Login', () => login.change(true)),
+              `</div>`,
+              `<div id="profileControls" class="hidden">`,
+                Prefabs.LinkBtn('Refresh', () => roomService.getOpenRooms()),
+                Prefabs.LinkBtn('Create Room', () => roomService.newRoom()),
+                Prefabs.LinkBtn('Clear Rooms', () => roomService.clearRooms()),
+              `</div>`
             )
           )
         ),
         Prefabs.RoomView()
       ),
       Prefabs.Login(login)
-    )
+    ),
+    run: ui => {
+      authSub = authService.service.profile.onChange(profile => {
+        if(profile && profile.username){
+          ui.login.classList.add('hidden')
+          ui.profileControls.classList.remove('hidden')
+        }
+      })
+    },
+    cleanup: () => authService.service.profile.cleanup(authSub)
   })
 }

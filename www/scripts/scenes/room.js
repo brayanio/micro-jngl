@@ -17,7 +17,7 @@ export default () => {
       Prefabs.Join(
         Prefabs.Header('Zone', 'Danger'),
         Prefabs.Container('div', ['panel'],
-          `<strong>${joinedRoom.val().meta.id}</strong>`,
+          `<strong>${joinedRoom.val().meta.host.username}</strong>`,
           Prefabs.Nav('Lobby')
         )
       ),

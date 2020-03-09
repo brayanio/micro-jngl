@@ -1,4 +1,6 @@
 import nggt from '../nggt.js'
+import authService from './auth.js'
+const auth = () => { return { auth: authService.service.profile.val() } }
 
 const roomService = nggt.service({
   openRooms: nggt.dataObj([]),
@@ -11,12 +13,13 @@ const getOpenRooms = async () => {
 }
 
 const newRoom = async () => {
-  await roomService.read('joinedRoom', 'newRoom')
+  await roomService.read('joinedRoom', 'newRoom', auth())
+  console.log('new room', roomService.joinedRoom.val())
   return roomService.newRoom
 }
 
 const clearRooms = async () => {
-  await roomService.read('openRooms', 'clearRooms')
+  await roomService.read('openRooms', 'clearRooms', auth())
   return roomService.openRooms
 }
 

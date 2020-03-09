@@ -1,8 +1,10 @@
 import nggt from '../../nggt.js'
 import Layout from '../layout/module.js'
+import authService from '../../services/auth.js'
 
 const modalOptions = {closeOnClick: true, classList: ['login'], ui: 'loginModal'}
 
+const authObj = nggt.dataObj({})
 const state = nggt.dataObj('login')
 let stateSub
 export default (dataObj) => nggt.create({
@@ -32,10 +34,22 @@ export default (dataObj) => nggt.create({
         `,
         Layout.Container('div', ['right'],
           `<span id="login">`,
-            Layout.LinkBtn('Login', () => {}),
+            Layout.LinkBtn('Login', () => authService.login(...Object.values(authObj.val()))),
           `</span>`,
           `<span id="signup">`,
-            Layout.LinkBtn('Sign Up', () => {}),
+            Layout.LinkBtn('Sign Up', () => {
+              let auth = authObj.val()
+              console.log(auth)
+              if(auth.username.length > 4)
+                if(auth.confirm === auth.password)
+                  if(auth.password.length > 4)
+                    if(auth.email.length > 0)
+                      authService.signup(
+                        auth.username,
+                        auth.password,
+                        auth.email
+                      )
+            }),
           `</span>`
         )
       )
@@ -67,6 +81,24 @@ export default (dataObj) => nggt.create({
         ui.emailLbl.classList.remove('hidden')
         ui.createProfile.classList.add('hidden')
         ui.loginProfile.classList.remove('hidden')
+      }
+    })
+    ui.username.addEventListener('change', 
+      () => authObj.change(obj => obj.username = ui.username.value))
+    ui.pass.addEventListener('change', 
+      () => authObj.change(obj => obj.password = ui.pass.value))
+    ui.confirmPass.addEventListener('change', 
+      () => authObj.change(obj => obj.confirm = ui.confirmPass.value))
+    ui.email.addEventListener('change', 
+      () => authObj.change(obj => obj.email = ui.email.value))
+
+    authService.service.profile.onChange(profile => {
+      if(profile === undefined) return null
+      if(profile.error)
+        return console.error(`Auth Error: ` + profile.error)
+      else {
+        dataObj.change(false)
+        console.log(profile)
       }
     })
   },
