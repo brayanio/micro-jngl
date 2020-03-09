@@ -35,7 +35,7 @@ export default (dataObj) => nggt.create({
         `,
         Layout.Container('div', ['right'],
           `<span id="login">`,
-            Layout.LinkBtn('Login', () => authService.login(...Object.values(authObj.val()))),
+            Layout.LinkBtn('Login', () => authService.login(authObj.val().username, authObj.val().password)),
           `</span>`,
           `<span id="signup">`,
             Layout.LinkBtn('Sign Up', () => {

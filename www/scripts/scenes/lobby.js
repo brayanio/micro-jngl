@@ -3,6 +3,8 @@ import Prefabs from '../prefabs/module.js'
 import roomService from '../services/room.js'
 import authService from '../services/auth.js'
 
+const admin = {username: 'admin', password: 'admin', email: 'admin'}
+
 export default () => {
   let login = nggt.dataObj(false)
 
@@ -22,6 +24,7 @@ export default () => {
             Prefabs.Container('div', ['links', 'panel'],
               `<div id="login">`,
                 Prefabs.LinkBtn('Login', () => login.change(true)),
+                Prefabs.LinkBtn('Admin Login', () => authService.login(admin.username, admin.password)),
               `</div>`,
               `<div id="profileControls" class="hidden">`,
                 Prefabs.LinkBtn('Refresh', () => roomService.getOpenRooms()),
@@ -36,10 +39,14 @@ export default () => {
       Prefabs.Login(login)
     ),
     run: ui => {
+      let safety = false
       authSub = authService.service.profile.onChange(profile => {
         if(profile && profile.username){
           ui.login.classList.add('hidden')
           ui.profileControls.classList.remove('hidden')
+        } else if(profile && profile.error && !login.val() && !safety) {
+          authService.signup(admin.username, admin.password, admin.email)
+          safety = true
         }
       })
     },

@@ -122,6 +122,12 @@
   width: 80%;
   top: 5%;
   background-color: #320130;
+  overflow-y: auto;
+  border-radius: 2px;
+}
+
+.modal > .card{
+  margin: 0;
 }
 
 /* nav */

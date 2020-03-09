@@ -5,27 +5,6 @@
 @import './login.css';
 
 :root{
-  --shadow0: rgba(0, 0, 0, 0.06);
-  --shadow1: rgba(0, 0, 0, 0.12);
-  --shadow2: rgba(0, 0, 0, 0.18);
-  --shadow3: rgba(0, 0, 0, 0.24);
-  --shadow4: rgba(0, 0, 0, 0.30);
-  --shadow5: rgba(0, 0, 0, 0.36);
-  --light0: rgba(255, 255, 255, 0.06);
-  --light1: rgba(255, 255, 255, 0.12);
-  --light2: rgba(255, 255, 255, 0.18);
-  --light3: rgba(255, 255, 255, 0.24);
-  --light4: rgba(255, 255, 255, 0.30);
-  --light5: rgba(255, 255, 255, 0.36);
-  --round: 6px;
-
-  --btn0: var(--light2);
-  --btn1: var(--light3);
-  --btn0-hover: var(--light4);
-  --btn1-hover: var(--light5);
-
-  --text: #444;
-
   font-size: 1em;
 }
 

@@ -6,8 +6,10 @@ export default (dataObj, options, ...args) => {
   return nggt.create({
     template: `
       <div id="modal" class="modal-bg">
-        <div class="modal card ${classList.join(' ')}">
-          ${Join(...args)}
+        <div class="modal ${classList.join(' ')}">
+          <div class="card">`
+            +Join(...args)
+          +`</div>
         </div>
       </div>
     `,
