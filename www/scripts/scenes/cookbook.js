@@ -9,7 +9,7 @@ const tab = (id, prefab) => `
 `
 
 export default () => {
-  let tabs = nggt.dataObj('hero'), tabsub
+  let tabs = nggt.dataObj('hero'), tabSub
   return nggt.create({
     isRoot: true,
     classList: ['cookbook'],
@@ -35,7 +35,7 @@ export default () => {
     run: (ui, data) => {
       ui = {...ui, ...data.val()}
       let curTab
-      tabsub = tabs.onChange(t => {
+      tabSub = tabs.onChange(t => {
         if(curTab)
           curTab.classList.add('hidden')
         curTab = ui[t]
@@ -43,7 +43,7 @@ export default () => {
       })
     },
     cleanup: () => {
-      tabs.cleanup(tabsub)
+      tabSub.cleanup()
     }
   })
 }

@@ -6,7 +6,7 @@ const modalOptions = {closeOnClick: true, classList: ['login'], ui: 'loginModal'
 
 const authObj = nggt.dataObj({username: '', password: '', confirm: '', email: ''})
 const state = nggt.dataObj('login')
-let stateSub
+let stateSub, authSub
 export default (dataObj) => nggt.create({
   template: Layout.Modal(dataObj, modalOptions,
     Layout.IconBtn('close', () => dataObj.change(false)),
@@ -93,7 +93,7 @@ export default (dataObj) => nggt.create({
     ui.email.addEventListener('change', 
       () => authObj.change(obj => obj.email = ui.email.value))
 
-    authService.service.profile.onChange(profile => {
+    authSub = authService.service.profile.onChange(profile => {
       if(profile === undefined) return null
       if(profile.error){
         ui.error.innerText = profile.error
@@ -112,6 +112,7 @@ export default (dataObj) => nggt.create({
     })
   },
   cleanup: () => {
-    state.cleanup(stateSub)
+    stateSub.cleanup()
+    authSub.cleanup()
   }
 })

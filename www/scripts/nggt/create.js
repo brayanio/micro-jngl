@@ -4,7 +4,7 @@ const guid = (r, v) =>
 
 export default (coreObj) => {
   return props => {
-    //props: run, cleanup, template, isRoot, classList, auto
+    //props: run, cleanup, template, isRoot, classList, auto, debug
     let id = guid()
     const core = coreObj.val()
     const data = core.cache
@@ -25,13 +25,15 @@ export default (coreObj) => {
       props.auto(ui, data)
     }, 15)
 
-    props.template = props.template.split('id="').join(id + '="')
+    props.template = props.template.split(' id="').join(` ${id}="`)
 
     if(props.cleanup)
       core.cleanupAr.push(props.cleanup)
 
     if(props.isRoot){
       core.root.classList.add(...props.classList)
+      if(props.debug)
+        console.log(props.template)
       core.root.innerHTML = props.template
       setTimeout(() => {
         if(props.run)

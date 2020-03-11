@@ -5,11 +5,12 @@ import roomService from '../services/room.js'
 export default () => {
   let joinedRoom = roomService.service.joinedRoom
 
-  if(!joinedRoom.val()){
+  if(!joinedRoom.val() || !joinedRoom.val().meta){
     location.hash = '#/'
     return ''
   }
 
+  let roomSub
   return nggt.create({
     isRoot: true,
     classList: ['room-lobby'],
@@ -18,7 +19,9 @@ export default () => {
         Prefabs.Header('Zone', 'Danger'),
         Prefabs.Container('div', ['panel'],
           `<strong>${joinedRoom.val().meta.host.username}</strong>`,
-          Prefabs.Nav('Lobby')
+          Prefabs.Container('nav', ['right'],
+            Prefabs.LinkBtn('Leave', () => roomService.leaveRoom())
+          )
         )
       ),
       Prefabs.Join(
@@ -33,9 +36,18 @@ export default () => {
           `</ul>`,
         ),
         Prefabs.Container('div', ['panel right'],
-          Prefabs.LinkBtn('Start', () => {})
+          Prefabs.LinkBtn('Start', () => {location.hash = '#/game'})
         )
       )
-    )
+    ),
+    run: (ui) => {
+      roomSub = joinedRoom.onChange(room => {
+        if(!room || !room.meta)
+          location.hash = '#/'
+      })
+    },
+    cleanup: () => {
+      roomSub.cleanup()
+    }
   })
 }

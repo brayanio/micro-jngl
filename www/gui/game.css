@@ -1,89 +1,20 @@
-.sprite{
-    position: relative;
+.game {
+  position absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
 }
 
-.map{
-    position: relative;
-    left: 0;
-    right: 0;
-    min-width: 100vw;
-    min-height: 100vh;
-    background: linear-gradient(145deg, #807ab8, #393663);
-    box-shadow: inset 0 0 100px pink, 0 0 100px pink;
-    border-radius: 24px;
-}
-
-.transition{
-    transition: .2s;
-}
-
-.square, .circle{
-    background-color: darkgreen;
-    border: 8px solid var(--shadow0);
-}
-
-.square:focus, .circle:focus{
-    outline: none;
-    border-color: green;
-}
-
-.circle{
-    border-radius: 100%;
-}
-
-.circle.enemy, .square.enemy{
-    background-color: maroon;
-    border: 16px solid var(--shadow0);
-}
-
-.square:focus, .circle:focus{
-    outline: none;
-    border-color: red;
-}
-
-.btn {
-    border-radius: var(--round);
-    box-shadow: 3px 5px 5px var(--shadow0), -3px -5px 5px var(--light0);
-    justify-content: center;
-    display: flex;
-    align-items: center;
-    transition: box-shadow .3s;
-    cursor: pointer;
-    background: linear-gradient(145deg, var(--btn0), var(--btn1));
-}
-
-.btn:hover{
-    box-shadow: 3px 5px 10px var(--shadow1), -3px -5px 10px var(--light1);
-    background: linear-gradient(145deg, var(--btn0-hover), var(--btn1-hover));
-    font-size: 1.1em;
-}
-
-.btn.disabled, .btn.active{
-    box-shadow: inset 3px 5px 10px var(--shadow2), inset -3px -5px 10px var(--shadow0);
-    background: transparent;
-}
-.btn.active{
-    color: white;
-}
-
-.btn.disabled{
-    background: linear-gradient(145deg, var(--btn0), var(--btn1));
-    font-size: 1em;
-    cursor: not-allowed;
-}
-
-.btn:focus{
-    outline: none;
-    border: 3px solid blue;
-    box-shadow: 3px 5px 10px var(--shadow1), -3px -5px 10px var(--light1);
-    background: linear-gradient(145deg, var(--btn0-hover), var(--btn1-hover));
-    font-size: 1.1em;
-}
-
-.hud{
-  position: fixed;
-}
-
-.hud *{
+.game, .map, .sprite {
   position: absolute;
+}
+
+.sprite {
+  position: absolute;
+}
+
+[game="player"] {
+  background: cyan;
+  border-radius: 100%;
 }

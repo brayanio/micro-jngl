@@ -18,6 +18,7 @@ export default () => {
     `,
     run: async (ui, data) => {
       openRoomSub = Room.service.openRooms.onChange(rooms => {
+        console.log(rooms)
         let html = Join(title(rooms.length), ...rooms.map(room => RoomCard(room)))
         ui.container.innerHTML = html
       })
@@ -25,7 +26,7 @@ export default () => {
         Room.getOpenRooms()
     },
     cleanup: () => {
-      Room.service.openRooms.cleanup(openRoomSub)
+      openRoomSub.cleanup()
     }
   })
 }

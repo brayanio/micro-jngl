@@ -8,7 +8,7 @@ export default room => {
     template: `
       <div class="room-card">
         <div>
-          <strong>Host: ${room?.meta?.host?.username || 'Grimlic'}</strong>
+          <strong>Host: ${room.meta.host.username}</strong>
           <br>
           <small>Players: ${room.meta.players.length}/6</small>
         </div>
@@ -16,6 +16,7 @@ export default room => {
       </div>
     `,
     auto: async (ui, data) => {
+      console.log(ui, room)
       ui.join.addEventListener('click', () => Room.joinRoom(room))
       authSub = authService.service.profile.onChange(profile => {
         if(profile && profile.username)
@@ -23,7 +24,7 @@ export default room => {
       })
     },
     cleanup: () => {
-      authService.service.profile.cleanup(authSub)
+      authSub.cleanup()
     }
   })
 }

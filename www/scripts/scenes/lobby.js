@@ -50,6 +50,8 @@ export default () => {
         }
       })
     },
-    cleanup: () => authService.service.profile.cleanup(authSub)
+    cleanup: () => {
+      authSub.cleanup()
+    }
   })
 }

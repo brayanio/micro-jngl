@@ -1,16 +1,16 @@
 export default obj => {
   let subs = [];
 
+  const cleanup = fn => subs = subs.filter(f => f !== fn)
   const onChange = fn => {
     subs.push(fn)
     fn(obj)
-    return fn
+    return {cleanup: () => cleanup(fn)}
   }
   const stop = () => subs = [];
   const val = () => obj;
   const update = () => subs.forEach(fn => fn(obj))
-  const cleanup = fn => subs = subs.filter(f => f !== fn)
-
+  
   const change = e => {
     (typeof e === 'function') ? e(obj) : obj = e;
     update();
