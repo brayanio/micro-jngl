@@ -45,22 +45,33 @@ const updateSprite = (el, options) => {
 
 const sprites = nggt.dataObj({})
 const registerSprite = options => sprites.change(obj => obj[options.id] = options)
-const clearSprites = sprites.change({})
+const clearSprites = () => sprites.change({})
+
+const map = nggt.dataObj()
+const registerMap = m =>
+  map.change(m)
+const clearMap = () => map.change()
 
 const resize = () => {
   windowSize = { w: innerWidth, h: innerHeight }
   if(location.hash !== '#/game') return null
+  let el
   let spriteAr = Object.values(sprites.val())
   if(spriteAr){
-    let el, rect
     spriteAr.forEach(sprite => {
       el = document.querySelector(`[game=${sprite.id}]`)
       if(el)
         updateSprite(el, sprite)
     })
   }
+  let m = map.val()
+  if(m){
+    el = document.querySelector(`[game="map"]`)
+    if(el)
+      updateSprite(el, m)
+  }
 }
 
 addEventListener('resize', () => resize())
 
-export default { setup, bounds, zoom, registerSprite, clearSprites }
+export default { setup, bounds, zoom, registerSprite, clearSprites, registerMap, clearMap }

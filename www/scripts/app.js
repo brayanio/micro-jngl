@@ -5,7 +5,7 @@ import Cookbook from './scenes/cookbook.js'
 import Room from './scenes/room.js'
 import Game from './scenes/game.js'
 
-render.setup(1000, 1000)
+render.setup(1200, 800)
 
 nggt.router({
   '/': Lobby,
