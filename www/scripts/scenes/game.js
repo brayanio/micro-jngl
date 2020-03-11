@@ -32,10 +32,13 @@ export default () => {
     ),
     run: (ui) => {
       ui.player.addEventListener('click', () => jngl.Sprite.select('player'))
+      jngl.Loop.start()
     },
     cleanup: () => {
+      jngl.Loop.stop()
       jngl.Sprites.cleanup()
       jngl.Map.cleanup()
+      jngl.Loop.cleanup()
     }
   })
 }

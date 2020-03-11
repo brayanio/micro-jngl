@@ -5,10 +5,10 @@
 */
 
 export default coreObj => {
-  const core = coreObj.val()
+  const core = () => coreObj.val()
 
-  const resizeW = val => Math.round(val * (core.windowSize.w / core.gameSize.w) * core.gameZoom)
-  const resizeH = val => Math.round(val * (core.windowSize.h / core.gameSize.h) * core.gameZoom)
+  const resizeW = val => Math.round(val * (core().windowSize.w / core().gameSize.w) * core().gameZoom)
+  const resizeH = val => Math.round(val * (core().windowSize.h / core().gameSize.h) * core().gameZoom)
 
   const scale = rect => {
     return {

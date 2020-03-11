@@ -2,8 +2,11 @@ import nggt from '../../nggt.js'
 import jngl from '../../jngl.js'
 import Join from '../layout/join.js'
 
-const moveEvent = (el, x, y) => {
-  el.addEventListener('click', () => jngl.Map.move(x, y))
+const moveEvent = (el, dir) => {
+  el.addEventListener('focus', () => jngl.Map.scroll(dir, true))
+  el.addEventListener('blur', () => jngl.Map.scroll(dir, false))
+  el.addEventListener('mouseenter', () => jngl.Map.scroll(dir, true))
+  el.addEventListener('mouseout', () => jngl.Map.scroll(dir, false))
 }
 export default (x, y) => nggt.create({
   template: `
@@ -14,10 +17,7 @@ export default (x, y) => nggt.create({
       <button type="button" class="right" id="guide_right"></button>
     </div>
   `,
-  run: ui => {
-    moveEvent(ui.guide_top, 0, y)
-    moveEvent(ui.guide_bottom, 0, -y)
-    moveEvent(ui.guide_left, x)
-    moveEvent(ui.guide_right, -x)
-  }
+  run: ui =>
+    ['top', 'bottom', 'left', 'right'].forEach(dir =>
+      moveEvent(ui[`guide_${dir}`], dir))
 })

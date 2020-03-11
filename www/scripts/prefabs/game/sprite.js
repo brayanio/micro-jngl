@@ -14,6 +14,7 @@ export default (options, ...template) => {
   
   if(options.rect){
     let r = options.rect ? jngl.Rect.style(options.rect) : {}
+    console.log(options.rect, r)
     if(r.y)
       styles.push(`top:${r.y};`)
     if(r.x)

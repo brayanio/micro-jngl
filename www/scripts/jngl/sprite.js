@@ -1,21 +1,21 @@
 import nggt from '../nggt.js'
 
 export default coreObj => {
-  const core = coreObj.val()
+  const core = () => coreObj.val()
 
-  const register = options => core.sprites.change(obj => obj[options.id] = options)
-  const cleanup = () => core.sprites.change({})
+  const register = options => core().sprites.change(obj => obj[options.id] = options)
+  const cleanup = () => core().sprites.change({})
 
   const select = id => {
-    if(!core.selectedSprites.val().includes(id))
-      core.selectedSprites.change(ar => ar.push(id))
+    if(!core().selectedSprites.val().includes(id))
+      core().selectedSprites.change(ar => ar.push(id))
   }
-  const deselectAll = () => core.selectedSprites.change([])
-  const deselect = id => core.selectedSprites.change(ar => 
+  const deselectAll = () => core().selectedSprites.change([])
+  const deselect = id => core().selectedSprites.change(ar => 
     ar = ar.filter(e => e !== id))
 
   let lastSelected = []
-  core.selectedSprites.onChange(sel => {
+  core().selectedSprites.onChange(sel => {
     if(sel){
       let el, i
       sel.forEach(id => {

@@ -1,4 +1,5 @@
 import nggt from './nggt.js'
+import Loop from './jngl/loop.js'
 import Map from './jngl/map.js'
 import Rect from './jngl/rect.js'
 import Sprite from './jngl/sprite.js'
@@ -8,7 +9,8 @@ const
 GAME_WIDTH = 1200,
 GAME_HEIGHT = 800,
 MIN_ZOOM = .5,
-MAX_ZOOM = 5
+MAX_ZOOM = 5,
+DEFAULT_SCROLL_SPEED = 5
 
 // END GAME CONSTS
 
@@ -16,11 +18,16 @@ const core = nggt.dataObj({
   gameSize: {w: GAME_WIDTH, h: GAME_HEIGHT},
   windowSize: {w: innerWidth, h: innerHeight},
   gameZoom: 1,
+  scrollSpeed: DEFAULT_SCROLL_SPEED,
   map: nggt.dataObj(),
   selectedSprites: nggt.dataObj([]),
-  sprites: nggt.dataObj({})
+  sprites: nggt.dataObj({}),
+  coreLoops: nggt.dataObj([]),
+  loops: nggt.dataObj({}),
+  controls: nggt.dataObj({})
 })
 
+const loop = Loop(core)
 const map = Map(core)
 const rect = Rect(core)
 const sprite = Sprite(core)
@@ -71,6 +78,7 @@ export default {
     selectedSprites: () => core.val().selectedSprites,
     sprites: () => core.val().sprites
   },
+  Loop: loop,
   Map: map, 
   Rect: rect, 
   Sprite: sprite,
