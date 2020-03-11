@@ -1,5 +1,5 @@
 import nggt from '../../nggt.js'
-import render from '../../render.js'
+import jngl from '../../jngl.js'
 import Join from '../layout/join.js'
 
 export default (options, ...template) => {
@@ -13,7 +13,7 @@ export default (options, ...template) => {
     el = 'button'
   
   if(options.rect){
-    let r = options.rect ? render.bounds(options.rect) : {}
+    let r = options.rect ? jngl.Rect.style(options.rect) : {}
     if(r.y)
       styles.push(`top:${r.y};`)
     if(r.x)
@@ -28,7 +28,7 @@ export default (options, ...template) => {
   classList = `class="${classList.join(' ')}"`
 
   options.template = template
-  render.registerSprite(options)
+  jngl.Sprite.register(options)
 
   return `
     <${el} ${id}${classList}${styles}>

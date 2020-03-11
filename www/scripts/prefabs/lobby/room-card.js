@@ -16,7 +16,6 @@ export default room => {
       </div>
     `,
     auto: async (ui, data) => {
-      console.log(ui, room)
       ui.join.addEventListener('click', () => Room.joinRoom(room))
       authSub = authService.service.profile.onChange(profile => {
         if(profile && profile.username)
