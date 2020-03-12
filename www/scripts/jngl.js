@@ -1,4 +1,5 @@
 import nggt from './nggt.js'
+import Controls from './jngl/controls.js'
 import Loop from './jngl/loop.js'
 import Map from './jngl/map.js'
 import Rect from './jngl/rect.js'
@@ -10,7 +11,7 @@ GAME_WIDTH = 1200,
 GAME_HEIGHT = 800,
 MIN_ZOOM = .5,
 MAX_ZOOM = 5,
-DEFAULT_SCROLL_SPEED = 5
+DEFAULT_SCROLL_SPEED = 25
 
 // END GAME CONSTS
 
@@ -27,6 +28,7 @@ const core = nggt.dataObj({
   controls: nggt.dataObj({})
 })
 
+const controls = Controls(core)
 const loop = Loop(core)
 const map = Map(core)
 const rect = Rect(core)
@@ -72,7 +74,10 @@ const zoom = val => {
 addEventListener('resize', () => resize())
 core.val().map.onChange(() => resize())
 
+const pushToStack = fn => setTimeout(() => fn(), 0)
+
 export default { 
+  Controls: controls,
   Core: {
     map: () => core.val().map,
     selectedSprites: () => core.val().selectedSprites,
@@ -82,6 +87,7 @@ export default {
   Map: map, 
   Rect: rect, 
   Sprite: sprite,
+  pushToStack,
   resize,
   zoom
  }

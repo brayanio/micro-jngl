@@ -1,11 +1,15 @@
 /* z index */
 
+.game .modal-bg{
+  z-index: 4;
+}
+
 .game button{
-  z-index: 3
+  z-index: 3;
 }
 
 .guides button{
-  z-index: 2
+  z-index: 2;
 }
 
 /* end z index */
@@ -18,10 +22,17 @@
   overflow: hidden;
 }
 
+.map{
+  background: #ffffff05;
+  border-radius: 4px;
+  box-shadow: 5px 5px 5px var(--lobby-btn-bs1), -5px -5px 5px var(--lobby-btn-bs2);
+}
+
 .game,
 .map,
 .sprite, 
-.guides, .guides button
+.guides, .guides button,
+.grid
 {
   position: absolute;
 }
@@ -43,37 +54,36 @@
 }
 
 .guides button{
-  background: #ffffff15;
-  border: 1px solid #00000015 !important;
+  background: #ffffff90;
   border-radius: 4px;
 }
 
 .guides .top{
-  left: 5%;
+  left: 0;
   top: 0;
-  width: 90%;
-  height: 30px;
+  width: 100%;
+  height: 60px;
 }
 
 .guides .bottom{
-  left: 5%;
+  left: 0;
   bottom: 0;
-  width: 90%;
-  height: 30px;
+  width: 100%;
+  height: 60px;
 }
 
 .guides .left{
   left: 0;
-  top: 5%;
-  width: 20px;
-  bottom: 5%;
+  top: 0;
+  width: 40px;
+  bottom: 0;
 }
 
 .guides .right{
   right: 0;
-  top: 5%;
-  width: 20px;
-  bottom: 5%;
+  top: 0;
+  width: 40px;
+  bottom: 0;
 }
 
 .sprite.selected{
@@ -83,4 +93,56 @@
   .sprite.selected{
     border: 8px solid green;
   }
+}
+
+.grid{
+  display: flex;
+  flex-wrap: wrap;
+  width: 40%;
+  bottom: 0;
+  left: 0;
+}
+
+.ability-btn{
+  position: relative;
+  width: calc(25% - 8px);
+  height: 30px;
+  margin: 4px;
+  border-radius: 8px;
+  padding: 4px 2px;
+  text-align: left;
+  font-weight: bold;
+}
+
+.hotkey{
+  position: absolute;
+  right: 0;
+  top: 0;
+  background: #ffffff90;
+  padding: 4px;
+  border-radius: 8px;
+  height: 30px;
+  line-height: 23px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.settings{
+  color: #ffffff90;
+}
+
+.settings h2{
+  display: flex;
+  align-content: center;
+  margin-left: 20px;
+}
+
+.settings .header-text{
+  margin-left: 20px;
+}
+
+.settings-btn{
+  color: #ffffff90;
+  margin-top: 20px;
+  margin-left: 20px;
 }

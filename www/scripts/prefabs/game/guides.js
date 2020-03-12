@@ -8,7 +8,7 @@ const moveEvent = (el, dir) => {
   el.addEventListener('mouseenter', () => jngl.Map.scroll(dir, true))
   el.addEventListener('mouseout', () => jngl.Map.scroll(dir, false))
 }
-export default (x, y) => nggt.create({
+export default () => nggt.create({
   template: `
     <div class="guides">
       <button type="button" class="top" id="guide_top"></button>
