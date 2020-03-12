@@ -19,6 +19,10 @@
   border-radius: 8px;
 }
 
+.login label input:hover{
+  outline: 1px solid cyan;
+}
+
 @media screen and (max-width: 800px){
  .login label{
    flex-direction: column;

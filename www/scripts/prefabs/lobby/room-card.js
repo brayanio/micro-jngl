@@ -16,14 +16,18 @@ export default room => {
       </div>
     `,
     auto: async (ui, data) => {
-      ui.join.addEventListener('click', () => Room.joinRoom(room))
-      authSub = authService.service.profile.onChange(profile => {
-        if(profile && profile.username)
-          ui.join.classList.remove('hidden')
-      })
+      if(ui.join){
+        ui.join.addEventListener('click', () => Room.joinRoom(room))
+        authSub = authService.service.profile.onChange(profile => {
+          if(profile && profile.username)
+            ui.join.classList.remove('hidden')
+        })
+      }
     },
     cleanup: () => {
-      authSub.cleanup()
+      if(authSub)
+        authSub.cleanup()
+      authSub = null
     }
   })
 }

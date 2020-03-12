@@ -15,7 +15,7 @@ export default () => nggt.create({
     AbilityBtn('Ability 4', 'r', () => {}),
     AbilityBtn('Attack', 'a', () => {}),
     AbilityBtn('Stop', 's', () => {}),
-    AbilityBtn('Deselect', 'd', () => {}),
+    AbilityBtn('Deselect', 'd', () => jngl.Sprite.deselectAll()),
     AbilityBtn('Interact', 'f', () => {})
   )
 })
