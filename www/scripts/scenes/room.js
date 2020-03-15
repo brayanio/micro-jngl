@@ -5,7 +5,7 @@ import roomService from '../services/room.js'
 export default () => {
   let joinedRoom = roomService.service.joinedRoom
 
-  if(!joinedRoom.val() || !joinedRoom.val().meta){
+  if(!joinedRoom.val()){
     location.hash = '#/'
     return ''
   }
@@ -18,7 +18,7 @@ export default () => {
       Prefabs.Join(
         Prefabs.Header('Zone', 'Danger'),
         Prefabs.Container('div', ['panel'],
-          `<strong>${joinedRoom.val().meta.host.username}</strong>`,
+          `<strong>${joinedRoom.val().host.username}</strong>`,
           Prefabs.Container('nav', ['right'],
             Prefabs.LinkBtn('Leave', () => roomService.leaveRoom())
           )
@@ -28,7 +28,7 @@ export default () => {
         Prefabs.Container('div', ['panel'],
           `<strong>Room Lobby</strong><br>`,
           `<ul>`,
-            Prefabs.Join(joinedRoom.val().meta.players.map(player => `
+            Prefabs.Join(joinedRoom.val().players.map(player => `
             <li>
               <strong>${player.username}</strong>
             </li>
@@ -42,7 +42,7 @@ export default () => {
     ),
     run: (ui) => {
       roomSub = joinedRoom.onChange(room => {
-        if(!room || !room.meta)
+        if(!room)
           location.hash = '#/'
       })
     },

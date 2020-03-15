@@ -30,7 +30,7 @@ const joinRoom = async room => {
 const leaveRoom = async () => {
   let room = roomService.joinedRoom.val()
   if(room){
-    let id = room.meta.id
+    let id = room.id
     roomService.joinedRoom.change(null)
     await roomService.read('openRooms', 'leaveRoom', auth({id}))
     return roomService.openRooms
