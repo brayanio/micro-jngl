@@ -18,6 +18,7 @@ export default () => {
     `,
     run: async (ui, data) => {
       openRoomSub = Room.service.openRooms.onChange(rooms => {
+        if(rooms.error) return console.log(rooms.error)
         let html = Join(title(rooms.length), ...rooms.map(room => RoomCard(room)))
         ui.container.innerHTML = html
       })

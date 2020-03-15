@@ -6,9 +6,11 @@
 
 export default coreObj => {
   const core = () => coreObj.val()
-
+  //                                val  10                ratio 2                             zoom 1
   const resizeW = val => Math.round(val * (core().windowSize.w / core().gameSize.w) * core().gameZoom)
   const resizeH = val => Math.round(val * (core().windowSize.h / core().gameSize.h) * core().gameZoom)
+  const sizeW = val => Math.round(val / (core().windowSize.w / core().gameSize.w) / core().gameZoom)
+  const sizeH = val => Math.round(val / (core().windowSize.h / core().gameSize.h) / core().gameZoom)
 
   const scale = rect => {
     return {
@@ -16,6 +18,13 @@ export default coreObj => {
       w: resizeW(rect.w),
       y: resizeH(rect.y),
       h: resizeH(rect.h)
+    }
+  }
+
+  const scaleMouse = pos => {
+    return {
+      x: sizeW(pos.x), 
+      y: sizeH(pos.y)
     }
   }
 
@@ -36,7 +45,7 @@ export default coreObj => {
     el.style.height = b.h
   }
 
-  return {
-    scale, style, update
-  }
+  const Rect = {scale, scaleMouse, style, update}
+  core().fn.change(obj => obj.Rect = Rect)
+  return Rect
 }

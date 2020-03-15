@@ -15,8 +15,8 @@ export default coreObj => {
 
   const event = (key, val) => {
     if(location.hash !== '#/game') return null
-    const controls = core().controls.val().hotkeys
-    let hotkey = controls[key]
+    const hotkeys = core().controls.val().hotkeys
+    let hotkey = hotkeys[key]
     if(hotkey.type === 'click')
       hotkey.fn()
     else

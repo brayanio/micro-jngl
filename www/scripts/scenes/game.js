@@ -38,7 +38,8 @@ export default () => {
         `<h2>`,
           Prefabs.IconBtn('close', () => settingsObj.change(false)),
           `<span class="header-text">Settings</span>
-        </h2>`
+        </h2><hr>`,
+        Prefabs.LinkBtn('Leave Match', () => location.hash = '#/lobby')
       )
       // Prefabs.Guides(5, 5)
     ),
@@ -46,10 +47,11 @@ export default () => {
       ui.player.addEventListener('click', () => jngl.Sprite.select('player'))
       jngl.Loop.start()
       jngl.pushToStack(() => jngl.Map.focusSprite('player'))
+      ui.map.addEventListener('click', e => jngl.Map.click(e, ui.map))
     },
     cleanup: () => {
       jngl.Loop.stop()
-      jngl.Sprites.cleanup()
+      jngl.Sprite.cleanup()
       jngl.Map.cleanup()
       jngl.Loop.cleanup()
     }

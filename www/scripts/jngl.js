@@ -25,13 +25,16 @@ const core = nggt.dataObj({
   sprites: nggt.dataObj({}),
   coreLoops: nggt.dataObj([]),
   loops: nggt.dataObj({}),
-  controls: nggt.dataObj({})
+  controls: nggt.dataObj({}),
+  fn: nggt.dataObj({})
 })
 
+//
+const rect = Rect(core)
+//
 const controls = Controls(core)
 const loop = Loop(core)
 const map = Map(core)
-const rect = Rect(core)
 const sprite = Sprite(core)
 
 const resize = () => {

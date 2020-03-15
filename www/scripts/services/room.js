@@ -12,7 +12,7 @@ const roomService = nggt.service({
 })
 
 const getOpenRooms = async () => {
-  await roomService.read('openRooms', 'getRoom', { isOpen: true })
+  await roomService.read('openRooms', 'getRooms', auth())
   return roomService.openRooms
 }
 
@@ -42,6 +42,9 @@ const clearRooms = async () => {
   return roomService.openRooms
 }
 
-roomService.joinedRoom.onChange(room => room ? location.hash = '#/room' : null)
+roomService.joinedRoom.onChange(room => {
+  console.log(room)
+  room ? location.hash = '#/room' : null
+})
 
 export default { getOpenRooms, newRoom, clearRooms, joinRoom, service: roomService, leaveRoom }

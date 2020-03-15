@@ -37,9 +37,17 @@ export default coreObj => {
 
   const scroll = (dir, val) => 
     core().controls.change(obj => obj.scrollBool[dir] = val)
+    
+  const click = (e, el) => {
+    if(e.target === el) {
+      let mousePos = core().fn.val().Rect.scaleMouse({x: e.x, y: e.y})
+      //todo something with the mousePOS
+    }
+  }
 
   return {  
     cleanup,
+    click,
     focusSprite, 
     move,
     register,

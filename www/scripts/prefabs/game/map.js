@@ -6,7 +6,7 @@ export default (map, ...template) => {
   jngl.Map.register(map)
 
   return `
-    <div class="map" game="map">
+    <div class="map" id="map" game="map">
       ${Join(...template)}
     </div>
   `
