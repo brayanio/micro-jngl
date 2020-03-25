@@ -1,7 +1,8 @@
+import gameService from '../services/game.js'
+
 export default coreObj => {
   const core = () => coreObj.val()
-
-  const register = m => core().map.change(m)
+  
   const cleanup = () => core().map.change()
 
   const move = (x, y) => core().map.change(o => {
@@ -18,30 +19,39 @@ export default coreObj => {
       })
   }
 
-  core().controls.change(obj => 
-    obj.scrollBool = {left: false, top: false, right: false, bottom: false})
-  
-  const scrollBool = () => core().controls.val().scrollBool
-
   core().coreLoops.change(ar => ar.push((dt) => {
-    const speed = core().scrollSpeed
-    if(scrollBool().left)
-      move(speed)
-    if(scrollBool().right)
-      move(-speed)
-    if(scrollBool().top)
-      move(0, speed)
-    if(scrollBool().bottom)
-      move(0, -speed)
+    if(core().selectedSprites.val().length > 0)
+      focusSprite(core().selectedSprites.val()[0])
   }))
 
-  const scroll = (dir, val) => 
-    core().controls.change(obj => obj.scrollBool[dir] = val)
+  // core().controls.change(obj => 
+  //   obj.scrollBool = {left: false, top: false, right: false, bottom: false})
+  
+  // const scrollBool = () => core().controls.val().scrollBool
+
+  // core().coreLoops.change(ar => ar.push((dt) => {
+  //   const speed = core().scrollSpeed
+  //   if(scrollBool().left)
+  //     move(speed)
+  //   if(scrollBool().right)
+  //     move(-speed)
+  //   if(scrollBool().top)
+  //     move(0, speed)
+  //   if(scrollBool().bottom)
+  //     move(0, -speed)
+  // }))
+
+  // const scroll = (dir, val) => 
+  //   core().controls.change(obj => obj.scrollBool[dir] = val)
     
   const click = (e, el) => {
     if(e.target === el) {
-      let mousePos = core().fn.val().Rect.scaleMouse({x: e.x, y: e.y})
-      //todo something with the mousePOS
+      const selected = core().selectedSprites.val()
+      if(selected){
+        let mousePos = core().fn.val().Rect.scaleMouse({x: e.x, y: e.y}, core().map.val().rect)
+        if(selected.length > 0)
+          gameService.move(mousePos)
+      }
     }
   }
 
@@ -50,7 +60,6 @@ export default coreObj => {
     click,
     focusSprite, 
     move,
-    register,
-    scroll
+    // scroll
   }
 }

@@ -26,6 +26,7 @@
   background: #ffffff05;
   border-radius: 4px;
   box-shadow: 5px 5px 5px var(--lobby-btn-bs1), -5px -5px 5px var(--lobby-btn-bs2);
+  transition: .3s;
 }
 
 .game,
@@ -39,9 +40,10 @@
 
 .sprite {
   position: absolute;
+  transition: .3s;
 }
 
-[game="player"] {
+.player {
   background: cyan;
   border-radius: 100%;
 }
@@ -145,4 +147,56 @@
   color: #ffffff90;
   margin-top: 20px;
   margin-left: 20px;
+}
+
+.move-template{
+  border-radius: 100%;
+  background-color: #666;
+  position: absolute;
+  width: 600px;
+  height: 600px;
+}
+
+.move-template div{
+  font-size: 25px;
+  padding: 50px;
+  border-radius: 100%;
+  background-color: #00ff0005;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.move-template div span{
+  position: absolute;
+}
+
+.move-template div span.top{
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.move-template div span.bottom{
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.move-template div span.left{
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.move-template div span.right{
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.move-template .sprite{
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%);
 }

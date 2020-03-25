@@ -1,8 +1,7 @@
 import nggt from '../../nggt.js'
+import Layout from '../layout/module.js'
 
-export default () => `
-  <div class="card" id="container">
-    <strong>Heros</strong>
-    <hr>
-  </div>
-`
+export default Layout.Container('div', ['card'],
+  Layout.Bold('Heros'),
+  'hr'
+)

@@ -2,11 +2,7 @@ import nggt from '../nggt.js'
 import Prefabs from '../prefabs/module.js'
 import roomService from '../services/room.js'
 
-const tab = (id, prefab) => `
-  <div id="${id}" class="hidden">
-    ${prefab}
-  </div>
-`
+const tab = (id, prefab) => Prefabs.Id('div', id, ['hidden'], prefab)
 
 export default () => {
   let tabs = nggt.dataObj('hero'), tabSub
@@ -14,18 +10,14 @@ export default () => {
     isRoot: true,
     classList: ['cookbook'],
     template: Prefabs.ColGrid(3, 7, 
-      Prefabs.Join(
-        Prefabs.Header('Book', 'Cook'),
-        Prefabs.Container('div', ['panel'],
-          Prefabs.Nav('Lobby'),
-          Prefabs.Container('div', ['links'],
-            Prefabs.LinkBtn('Heros', () => tabs.change('hero')),
-            Prefabs.LinkBtn('Units', () => tabs.change('unit')),
-            Prefabs.LinkBtn('Basics', () => {}),
-            Prefabs.LinkBtn('Advanced', () => {}),
-            Prefabs.LinkBtn('Dojo', () => {})
-          )
-        )
+      Prefabs.Sidebar('Cook', 'Book', [
+          ['Lobby', '#/lobby']
+        ],
+        Prefabs.LinkBtn('Heros', () => tabs.change('hero')),
+        Prefabs.LinkBtn('Units', () => tabs.change('unit')),
+        Prefabs.LinkBtn('Basics', () => {}),
+        Prefabs.LinkBtn('Advanced', () => {}),
+        Prefabs.LinkBtn('Dojo', () => {})
       ),
       Prefabs.Join(
         tab('hero', Prefabs.Hero()),

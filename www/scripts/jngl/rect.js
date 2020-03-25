@@ -21,10 +21,10 @@ export default coreObj => {
     }
   }
 
-  const scaleMouse = pos => {
+  const scaleMouse = (pos, rect) => {
     return {
-      x: sizeW(pos.x), 
-      y: sizeH(pos.y)
+      x: sizeW(pos.x -= rect.x), 
+      y: sizeH(pos.y -= rect.y)
     }
   }
 

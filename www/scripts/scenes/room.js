@@ -5,44 +5,35 @@ import roomService from '../services/room.js'
 export default () => {
   let joinedRoom = roomService.service.joinedRoom
 
-  if(!joinedRoom.val()){
+  if (!joinedRoom.val()) {
     location.hash = '#/'
     return ''
   }
 
-  let roomSub
+  let roomSub, roomInterval
   return nggt.create({
     isRoot: true,
     classList: ['room-lobby'],
-    template: Prefabs.ColGrid(3, 7, 
-      Prefabs.Join(
-        Prefabs.Header('Zone', 'Danger'),
-        Prefabs.Container('div', ['panel'],
-          `<strong>${joinedRoom.val().host.username}</strong>`,
-          Prefabs.Container('nav', ['right'],
-            Prefabs.LinkBtn('Leave', () => roomService.leaveRoom())
-          )
+    template: Prefabs.ColGrid(3, 7,
+      Prefabs.Sidebar('Danger', 'Zone', [],
+        Prefabs.Container('nav', ['right'],
+          Prefabs.LinkBtn('Leave', () => roomService.leaveRoom())
         )
       ),
-      Prefabs.Join(
-        Prefabs.Container('div', ['panel'],
-          `<strong>Room Lobby</strong><br>`,
-          `<ul>`,
-            Prefabs.Join(joinedRoom.val().players.map(player => `
-            <li>
-              <strong>${player.username}</strong>
-            </li>
-            `)),
-          `</ul>`,
-        ),
-        Prefabs.Container('div', ['panel right'],
-          Prefabs.LinkBtn('Start', () => {location.hash = '#/game'})
+      Prefabs.Container('div', ['panel'],
+        Prefabs.Bold(`Room Lobby`),
+        Prefabs.UL(...joinedRoom.val().players.map(player =>
+          Prefabs.Bold(player.username)
+        )),
+        Prefabs.Container('div', ['right'],
+          Prefabs.LinkBtn('Start', () => roomService.startRoom())
         )
       )
     ),
     run: (ui) => {
+
       roomSub = joinedRoom.onChange(room => {
-        if(!room)
+        if (!room)
           location.hash = '#/'
       })
     },

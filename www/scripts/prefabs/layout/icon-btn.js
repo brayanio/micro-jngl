@@ -1,8 +1,5 @@
 import nggt from '../../nggt.js'
+import Btn from './btn.js'
 import Icon from './icon.js'
 
-export default (icon, fn) => nggt.create({
-  template: `<button type="button" class="icon-btn" id="btn">${Icon(icon)}</button>`,
-  run: (ui, data) => 
-    ui.btn.addEventListener('click', e => fn(e))
-})
+export default (icon, fn) => Btn(['icon-btn'], Icon(icon), fn)

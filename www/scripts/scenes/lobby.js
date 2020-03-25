@@ -13,25 +13,21 @@ export default () => {
     isRoot: true,
     classList: ['lobby'],
     template: Prefabs.Join(
-      `<div class="exit-btn">`,
-        Prefabs.IconBtn('close', () => fetch('http://localhost:4404')),
-      `</div>`,
+      Prefabs.Container('div', ['exit-btn'],
+        Prefabs.IconBtn('close', () => fetch('http://localhost:4404'))
+      ),
       Prefabs.ColGrid(3, 7, 
-        Prefabs.Join(
-          Prefabs.Header('JNGL', 'Micro'),
-          Prefabs.Container('div', [],
-            Prefabs.Nav('Cookbook'),
-            Prefabs.Container('div', ['links', 'panel'],
-              `<div id="login">`,
-                Prefabs.LinkBtn('Login', () => login.change(true)),
-                Prefabs.LinkBtn('Admin Login', () => authService.login(admin.username, admin.password)),
-              `</div>`,
-              `<div id="profileControls" class="hidden">`,
-                Prefabs.LinkBtn('Refresh', () => roomService.getOpenRooms()),
-                Prefabs.LinkBtn('Create Room', () => roomService.newRoom()),
-                Prefabs.LinkBtn('Clear Rooms', () => roomService.clearRooms()),
-              `</div>`
-            )
+        Prefabs.Sidebar('Micro', 'JNGL', [
+            ['Cookbook', '#/cookbook']
+          ], 
+          Prefabs.Id('div', 'login', [], 
+            Prefabs.LinkBtn('Login', () => login.change(true)),
+            Prefabs.LinkBtn('Admin Login', () => authService.login(admin.username, admin.password))
+          ),
+          Prefabs.Id('div', 'profileControls', ['hidden'],
+            Prefabs.LinkBtn('Refresh', () => roomService.getOpenRooms()),
+            Prefabs.LinkBtn('Create Room', () => roomService.newRoom()),
+            Prefabs.LinkBtn('Clear Rooms', () => roomService.clearRooms())
           )
         ),
         Prefabs.RoomView()

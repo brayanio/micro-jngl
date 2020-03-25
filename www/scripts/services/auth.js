@@ -14,4 +14,6 @@ const login = async (username, password) => {
   return authService.profile
 }
 
-export default { signup, login, service: authService }
+const profile = () => authService.profile.val()
+
+export default { signup, login, service: authService, profile }

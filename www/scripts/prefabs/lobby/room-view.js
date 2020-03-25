@@ -1,7 +1,7 @@
 import nggt from '../../nggt.js'
 import Room from '../../services/room.js'
 import RoomCard from './room-card.js'
-import Join from '../layout/join.js'
+import Layout from '../layout/module.js'
 
 
 export default () => {
@@ -11,15 +11,11 @@ export default () => {
   
   let openRoomSub
   return nggt.create({
-    template: `
-      <div class="rooms panel" id="container">
-        ${title(0)}
-      </div>
-    `,
+    template: Layout.Id('div', 'container', ['rooms', 'panel'], title(0)),
     run: async (ui, data) => {
       openRoomSub = Room.service.openRooms.onChange(rooms => {
         if(rooms.error) return console.log(rooms.error)
-        let html = Join(title(rooms.length), ...rooms.map(room => RoomCard(room)))
+        let html = Layout.Join(title(rooms.length), ...rooms.map(room => RoomCard(room)))
         ui.container.innerHTML = html
       })
       if(Room.service.openRooms.val().length === 0)

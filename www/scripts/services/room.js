@@ -1,5 +1,6 @@
 import nggt from '../nggt.js'
 import authService from './auth.js'
+
 const auth = body => { 
   if(body)
     return { ...body, auth: authService.service.profile.val() } 
@@ -8,7 +9,8 @@ const auth = body => {
 
 const roomService = nggt.service({
   openRooms: nggt.dataObj([]),
-  joinedRoom: nggt.dataObj()
+  joinedRoom: nggt.dataObj(),
+  game: nggt.dataObj()
 })
 
 const getOpenRooms = async () => {
@@ -42,9 +44,44 @@ const clearRooms = async () => {
   return roomService.openRooms
 }
 
+const startRoom = async () => {
+  const room = roomService.joinedRoom.val()
+  if(room){
+    const id = room.id
+    await roomService.read('game', 'startRoom', auth({id}))
+    return roomService.openRooms
+  }
+}
+
+const checkRoom = async () => {
+  const room = roomService.joinedRoom.val()
+  if(room){
+    const id = room.id
+    await roomService.read('game', 'checkRoom', auth({id}))
+    return roomService.openRooms
+  }
+}
+
 roomService.joinedRoom.onChange(room => {
   console.log(room)
   room ? location.hash = '#/room' : null
 })
 
-export default { getOpenRooms, newRoom, clearRooms, joinRoom, service: roomService, leaveRoom }
+roomService.game.onChange(obj => {
+  console.log(obj)
+  if(!obj) return null
+  if(obj.status) return null
+  if(location.hash !== '#/game')
+    location.hash = '#/game'
+})
+
+export default { 
+  getOpenRooms, 
+  newRoom, 
+  clearRooms, 
+  joinRoom, 
+  service: roomService, 
+  leaveRoom, 
+  startRoom, 
+  checkRoom 
+}

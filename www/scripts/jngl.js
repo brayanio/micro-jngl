@@ -20,13 +20,17 @@ const core = nggt.dataObj({
   windowSize: {w: innerWidth, h: innerHeight},
   gameZoom: 1,
   scrollSpeed: DEFAULT_SCROLL_SPEED,
-  map: nggt.dataObj(),
+  map: nggt.dataObj({
+    id: 'map',
+    rect: {x: 0, y: 0, w: 0, h: 0}
+  }),
   selectedSprites: nggt.dataObj([]),
   sprites: nggt.dataObj({}),
   coreLoops: nggt.dataObj([]),
   loops: nggt.dataObj({}),
   controls: nggt.dataObj({}),
-  fn: nggt.dataObj({})
+  fn: nggt.dataObj({}),
+  init: nggt.dataObj([])
 })
 
 //
@@ -84,7 +88,8 @@ export default {
   Core: {
     map: () => core.val().map,
     selectedSprites: () => core.val().selectedSprites,
-    sprites: () => core.val().sprites
+    sprites: () => core.val().sprites,
+    init: () => core.val().init
   },
   Loop: loop,
   Map: map, 
