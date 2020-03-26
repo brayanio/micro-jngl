@@ -3,5 +3,5 @@ import Layout from '../layout/module.js'
 
 export default Layout.Container('div', ['card'],
   Layout.Bold('Units'),
-  'hr'
+  '<hr>'
 )

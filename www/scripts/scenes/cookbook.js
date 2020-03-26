@@ -20,8 +20,8 @@ export default () => {
         Prefabs.LinkBtn('Dojo', () => {})
       ),
       Prefabs.Join(
-        tab('hero', Prefabs.Hero()),
-        tab('unit', Prefabs.Unit())
+        tab('hero', Prefabs.Hero),
+        tab('unit', Prefabs.Unit)
       )
     ),
     run: (ui, data) => {
